@@ -1,0 +1,64 @@
+@font-face {
+  font-family: Ikarus;
+  src: url("./assets/Ikarus.woff2") format("woff2-variations");
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+00-7F, U+2014;
+}
+
+:root {
+  font-family: Ikarus, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 62.5%;
+  font-feature-settings:
+    "case" 1,
+    "liga" 1,
+    "ss02" 1,
+    "ss03" 1,
+    "ss04" 1,
+    "ss11" 1,
+    "ss13" 1,
+    "ss17" 1,
+    "ss18" 1;
+  font-variation-settings: "ital" 0, "cont" 0;
+  font-weight: 400;
+  font-stretch: 100%;
+  line-height: 1.5;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+section {
+  place-content: center;
+  place-self: center;
+  width: 49ch;
+  height: 100vh;
+  content-visibility: auto;
+  contain-intrinsic-width: 48ch;
+  contain-intrinsic-height: 100vh;
+  font-size: clamp(1.4rem, 0.75vw + 1.24rem, 2.2rem);
+  margin: 0 auto;
+  white-space: nowrap;
+  overflow: visible;
+  margin: 0;
+  padding: 0;
+  border: 2px dotted cornflowerblue;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+  border: 1px solid coral;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+}
