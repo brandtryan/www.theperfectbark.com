@@ -2,11 +2,12 @@
   font-family: Ikarus;
   src: url("./assets/Ikarus.woff2") format("woff2-variations");
   font-style: normal;
+  font-stretch: 60% 140%;
   font-display: swap;
   unicode-range: U+00-7F, U+2014;
 }
 
-:root {
+html {
   font-family: Ikarus, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-size: 62.5%;
   font-feature-settings:
@@ -28,7 +29,7 @@
   background-color: #242424;
 
   font-synthesis: none;
-  text-rendering: optimizeLegibility;
+  /* text-rendering: optimizeLegibility; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
