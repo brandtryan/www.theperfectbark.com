@@ -29,9 +29,9 @@ cont 0 100 100
     "ss11" 1,
     "ss12" 1,
     "ss18" 1;
-  font-variation-settings: "wght" 300, "wdth" 100, "ital" 0, "cont" 0;
-  /* font-weight: 325; */
-  /* font-stretch: 100%; */
+  font-variation-settings: "ital" 0, "cont" 0;
+  font-weight: 325;
+  font-stretch: 100%;
   line-height: 1.5;
   color-scheme: light dark;
   font-synthesis: none;
