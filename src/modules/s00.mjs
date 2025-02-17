@@ -1,8 +1,11 @@
 const s00 = document.getElementById('s00');
 // const s00LinesArray = Array.from(s00.getElementsByTagName('p'));
 // export const [s00Lines] = [s00LinesArray];
-const s00WordsArray = Array.from(s00.getElementsByTagName('span'));
-export const [s00Words] = [s00WordsArray];
+
+// const s00WordsArray = Array.from(s00.getElementsByTagName('span'));
+const wordsArray = Array.from(document.getElementsByTagName('span'));
+
+// export const [s00Words] = [s00WordsArray];
 
 // Helper function to create and start animation
 function createAndPlayAnimation(element) {
@@ -10,31 +13,41 @@ function createAndPlayAnimation(element) {
 
   const frames = JSON.parse(element.dataset.frames);
   const options = {
-    duration: parseFloat(element.dataset.duration),
     delay: parseFloat(element.dataset.delay),
+    endDelay: parseFloat(element.dataset.endDelay),
+    direction: element.dataset.direction,
+    duration: parseFloat(element.dataset.duration),
     easing: element.dataset.easing,
+    iterationStart: parseFloat(element.dataset.iterationStart),
+    composite: element.dataset.composite,
+    iterationComposite: element.dataset.iterationComposite,
+    iterations: parseFloat(element.dataset.iterations),
   };
 
   const effect = new KeyframeEffect(element, frames, options);
   const animation = new Animation(effect, document.timeline);
-  animation.play();
+  animation.pause();
+
+  element.addEventListener('mouseenter', () => {
+    //HTML has loaded
+    animation.play();
+  });
 
   return animation;
 }
 
 // Create animations for all words
-const wordAnimations = s00WordsArray.map((word, index) => {
+// const s00WordAnimations = s00WordsArray.map((word, index) => {
+const wordAnimations = wordsArray.map((word, index) => {
   const wordAnimation = createAndPlayAnimation(word);
-  console.log(`Created animation for word ${index}:`, {
-    enabled: word.dataset.enable,
-    duration: word.dataset.duration,
-    delay: word.dataset.delay,
-    easing: word.dataset.easing
-  });
+  // console.log(`Created animation for word ${index}:`, {
+  //   enabled: word.dataset.enable,
+  //   duration: word.dataset.duration,
+  //   delay: word.dataset.delay,
+  //   easing: word.dataset.easing
+  // });
   return wordAnimation;
 });
-
-export const s00WordAnimations = wordAnimations;
 
 // // Get a specific animation
 // const firstWordAnimation = s00WordAnimations[0];
