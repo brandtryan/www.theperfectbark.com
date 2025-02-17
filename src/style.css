@@ -38,6 +38,7 @@ cont 0 100 100
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scroll-snap-type: x mandatory;
 }
 
 @media (prefers-color-scheme: light) {
@@ -60,7 +61,7 @@ section {
   place-content: center;
   place-self: center;
   width: 49ch;
-  height: 100vh;
+  height: 150vh;
   content-visibility: auto;
   contain-intrinsic-width: 48ch;
   contain-intrinsic-height: 100vh;
@@ -70,15 +71,32 @@ section {
   overflow: visible;
   margin: 0;
   padding: 0;
-  border: 2px dotted cornflowerblue;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  /* border: 2px dotted cornflowerblue; */
+  animation: reveal linear forwards;
+  animation-timeline: view(block);
+  animation-range: cover 0% cover 40%;
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    clip-path: inset(85% 80% 85% 80%);
+  }
+
+  to {
+    opacity: 1;
+    clip-path: inset(0% 0% 0% 0%);
+  }
 }
 
 p {
   margin: 0;
-  border: 1px solid coral;
+  /* border: 1px solid coral; */
 }
 
-span:hover::after {
+/* span:hover::after {
   content: attr(id);
   display: block;
   position: absolute;
@@ -90,4 +108,4 @@ span:hover::after {
   top: 10px;
   left: 10px;
   z-index: 10;
-}
+} */
