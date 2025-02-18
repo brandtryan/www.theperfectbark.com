@@ -1,14 +1,5 @@
-// import 'https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js';
-
-// document.getElementById('parallax').animate(
-//     { transform: ['translateY(0)', 'translateY(100px)']},
-//     { fill: 'both',
-//       timeline: new ScrollTimeline({
-//         source: document.documentElement,
-//       }),
-//       rangeStart: new CSSUnitValue(0, 'px'),
-//       rangeEnd: new CSSUnitValue(200, 'px'),
-//     });
+import { createAndPlayAnimation } from "./modules/helpers/createAndPlayAnimation.mjs";
+import { sections, lines, words } from "./modules/elements.mjs";
 
 document.addEventListener('DOMContentLoaded', () => {
   //HTML has loaded
@@ -17,15 +8,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-// const s00l01 = document.getElementById('s00l00');
-// const duration = parseFloat(s00l01.getAttribute('duration'));
-// const timingFunction = s00l01.getAttribute('timing');
-// const keyframes = JSON.parse(s00l01.getAttribute('keyframes'));
 
-// const effect = new KeyframeEffect(s00l01, keyframes, {
-//   duration: duration,
-//   easing: timingFunction
-// });
+// Create animations for all words
+const wordAnimations = words.map((word, index) => {
+  const wordAnimation = createAndPlayAnimation(word);
+  // console.log(`Created animation for word ${index}:`, {
+  //   enabled: word.dataset.enable,
+  //   duration: word.dataset.duration,
+  //   delay: word.dataset.delay,
+  //   easing: word.dataset.easing
+  // });
+  return wordAnimation;
+});
 
-// const animation = new Animation(effect, document.timeline);
-// animation.play();
+// Get a specific word animation
+// const firstWordAnimation = s00WordAnimations[0];
+
+// Pause all word animations
+// wordAnimations.forEach(animation => animation?.pause());
+
+// Play all word animations
+// wordAnimations.forEach(animation => animation?.play());
+
+
+
+// Create animations for all lines
+const lineAnimations = lines.map((line, index) => {
+  const lineAnimation = createAndPlayAnimation(line);
+  // console.log(`Created animation for line ${index}:`, {
+  //   enabled: line.dataset.enable,
+  //   duration: line.dataset.duration,
+  //   delay: line.dataset.delay,
+  //   easing: line.dataset.easing,
+  // });
+  return lineAnimation;
+});
+
+// Get a specific animation
+// const firstLineAnimation = s00LineAnimations[0];
+
+// Pause all animations
+// lineAnimations.forEach(animation => animation?.pause());
+
+// Play all animations
+// lineAnimations.forEach(animation => animation?.play());
+
