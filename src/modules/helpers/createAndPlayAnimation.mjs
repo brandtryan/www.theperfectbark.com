@@ -20,9 +20,15 @@ export function createAndPlayAnimation(element) {
   const animation = new Animation(effect, document.timeline);
   animation.pause();
 
-  element.addEventListener('mouseenter', () => {
-    animation.play();
-  });
+  if (element.nodeName.toUpperCase() === 'SPAN') {
+    element.addEventListener('mouseenter', () => {
+      animation.play();
+    });
+  } else if (element.nodeName.toUpperCase() === 'P') {
+    element.addEventListener('click', () => {
+      animation.play
+    })
+  }
 
   return animation;
 }

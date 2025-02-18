@@ -72,7 +72,7 @@ section {
   margin: 0;
   padding: 0;
   scroll-snap-stop: always;
-  border: 2px dotted cornflowerblue;
+  /* border: 2px dotted cornflowerblue; */
   animation: reveal linear forwards;
   animation-timeline: view();
   animation-range: entry 40vh;
@@ -92,7 +92,7 @@ section {
 
 p {
   margin: 0;
-  border: 1px solid coral;
+  /* border: 1px solid coral; */
 }
 
 span:hover::after {
