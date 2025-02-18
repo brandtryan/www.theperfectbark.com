@@ -6,6 +6,27 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('Main.js and the DOM are loaded');
 });
 
+// Create animations for all sections
+const sectionAnimations = sections.map((section, index) => {
+  const sectionAnimation = createAndPlayAnimation(section);
+  // console.log(`Created animation for section ${index}:`, {
+  //   enabled: section.dataset.enable,
+  //   duration: section.dataset.duration,
+  //   delay: section.dataset.delay,
+  //   easing: section.dataset.easing,
+  // });
+  return sectionAnimation;
+});
+
+// Get a specific section animation
+// const firstSectionAnimation = sectionAnimations[0];
+
+// Pause all sectionanimations
+// sectionAnimations.forEach(animation => animation?.pause());
+
+// Play all section animations
+// sectionAnimations.forEach(animation => animation?.play());
+
 
 
 
