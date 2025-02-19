@@ -1,4 +1,5 @@
 import { createAndPlayAnimation } from "./modules/helpers/createAndPlayAnimation.mjs";
+import { playChildAnimations } from "./modules/helpers/playChildAnimations.mjs";
 import { sections, lines, words } from "./modules/elements.mjs";
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -6,24 +7,21 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('Main.js and the DOM are loaded');
 });
 
+const lineChildAnimations = [];
+const lineWordCounts = lines.map((line) => line.childElementCount);
+console.log(lineWordCounts);
+
+
 
 // Create animations for all words
 const wordAnimations = words.map((word, index) => {
   const wordAnimation = createAndPlayAnimation(word);
-  // console.log(`Created animation for word ${index}:`, {
-  //   enabled: word.dataset.enable,
-  //   duration: word.dataset.duration,
-  //   delay: word.dataset.delay,
-  //   easing: word.dataset.easing
-  // });
   return wordAnimation;
 });
 
-// Get a specific word animation
-// const firstWordAnimation = s00WordAnimations[0];
 
 // Pause all word animations
-// wordAnimations.forEach(animation => animation?.pause());
+wordAnimations.forEach(animation => animation?.pause());
 
 // Play all word animations
 // wordAnimations.forEach(animation => animation?.play());
@@ -32,12 +30,6 @@ const wordAnimations = words.map((word, index) => {
 // Create animations for all lines
 const lineAnimations = lines.map((line, index) => {
   const lineAnimation = createAndPlayAnimation(line);
-  // console.log(`Created animation for line ${index}:`, {
-  //   enabled: line.dataset.enable,
-  //   duration: line.dataset.duration,
-  //   delay: line.dataset.delay,
-  //   easing: line.dataset.easing,
-  // });
   return lineAnimation;
 });
 
@@ -54,12 +46,6 @@ lineAnimations.forEach(animation => animation?.pause());
 // Create animations for all sections
 const sectionAnimations = sections.map((section, index) => {
   const sectionAnimation = createAndPlayAnimation(section);
-  // console.log(`Created animation for section ${index}:`, {
-  //   enabled: section.dataset.enable,
-  //   duration: section.dataset.duration,
-  //   delay: section.dataset.delay,
-  //   easing: section.dataset.easing,
-  // });
   return sectionAnimation;
 });
 
@@ -72,3 +58,13 @@ sectionAnimations.forEach(animation => animation?.pause());
 // Play all section animations
 // sectionAnimations.forEach(animation => animation?.play());
 
+
+
+for (let line of lines) {
+  // let lineChildAnimationsArray = Array.from(line.children).flatMap((child) => child.getAnimations());
+  // lineChildAnimationsArray.forEach((lineChildAnimation) => lineChildAnimation.pause());
+  // lineChildAnimationsArray.map((item) => lineChildAnimations.push(item));
+  playChildAnimations(line);
+}
+
+console.log(lineChildAnimations);

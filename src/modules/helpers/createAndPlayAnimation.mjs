@@ -1,4 +1,3 @@
-
 // Helper function to create and start animation
 export function createAndPlayAnimation(element) {
   if (!element || element.dataset.enable === 'false') return null;
@@ -18,16 +17,15 @@ export function createAndPlayAnimation(element) {
 
   const effect = new KeyframeEffect(element, frames, options);
   const animation = new Animation(effect, document.timeline);
-  animation.pause();
 
-  if (element.nodeName.toUpperCase() === 'SPAN') {
+  Animation.playbackRate = parseFloat(element.dataset.playbackRate);
+  Animation.currentTime = parseFloat(element.dataset.currentTime);
+  Animation.startTime = parseFloat(element.dataset.startTime);
+
+  if (element.nodeName.toUpperCase() === 'SPAN' || element.nodeName.toUpperCase() === 'P') {
     element.addEventListener('mouseenter', () => {
       animation.play();
     });
-  } else if (element.nodeName.toUpperCase() === 'P') {
-    element.addEventListener('click', () => {
-      animation.play
-    })
   }
 
   return animation;
