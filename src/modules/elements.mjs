@@ -1,7 +1,7 @@
 
-const sectionElements = document.getElementsByTagName('section');
-const lineElements = document.getElementsByTagName('p');
-const wordElements = document.getElementsByTagName('span');
+export const sectionElements = document.getElementsByTagName('section');
+export const lineElements = document.getElementsByTagName('p');
+export const wordElements = document.getElementsByTagName('span');
 
 const sectionsArray = Array.from(sectionElements);
 const linesArray = Array.from(lineElements);
