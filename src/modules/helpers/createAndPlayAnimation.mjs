@@ -17,6 +17,7 @@ export function createAndPlayAnimation(element) {
 
   const effect = new KeyframeEffect(element, frames, options);
   const animation = new Animation(effect, document.timeline);
+  animation.id = element.id + 'Animation';
 
   Animation.playbackRate = parseFloat(element.dataset.playbackRate);
   Animation.currentTime = parseFloat(element.dataset.currentTime);
