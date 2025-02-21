@@ -1,5 +1,6 @@
 import { createAndPlayAnimation } from "./modules/helpers/createAndPlayAnimation.mjs";
 import { sections, lines, words, lineElements } from "./modules/elements.mjs";
+import { lineReadingTimes } from "./modules/helpers/lineReadingTimes.mjs"
 
 const pElements = [...lines];
 
@@ -14,7 +15,6 @@ const wordAnimations = words.map((word) => {
   return wordAnimation;
 });
 
-
 pElements.forEach((line) => {
   let arrayName = `${line.id}Animations`;
 
@@ -26,13 +26,14 @@ pElements.forEach((line) => {
     }
   })
 
-  console.log(`Array ${arrayName} now contains ${window[arrayName].length} animations.`);
+  // console.log(`Array ${arrayName} now contains ${window[arrayName].length} animations.`);
 });
+console.log(lineReadingTimes);
+
 
 
 // Pause all word animations
 wordAnimations.forEach(animation => animation?.pause());
-
 
 // Play all word animations
 // wordAnimations.forEach(animation => animation?.play());
