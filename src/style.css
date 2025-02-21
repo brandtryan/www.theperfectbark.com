@@ -16,6 +16,8 @@ cont 0 100 100
 }
 
 :root {
+  background-color: #213547;
+  color: #fffffff5;
   font-family: Ikarus, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-size: 62.5%;
   font-feature-settings:
@@ -33,7 +35,6 @@ cont 0 100 100
   font-weight: 325;
   font-stretch: 100%;
   line-height: 1.5;
-  color-scheme: light dark;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -49,12 +50,8 @@ cont 0 100 100
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    color: #ffffff;
-    background-color: #242424;
-    font-weight: 300;
-  }
+html {
+  font-weight: 300;
 }
 
 section {
