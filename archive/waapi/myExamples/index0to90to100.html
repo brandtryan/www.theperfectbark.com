@@ -1,0 +1,29 @@
+<style>
+  @font-face {
+    font-family: "Ikarus";
+    src: url("fonts/ABCIkarusv170-VariableVF.ttf") format("truetype-variations");
+  }
+
+  #object1 {
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    background: skyblue;
+    animation: animation1 1.5s ease 1 normal running 0s forwards;
+  }
+
+  @keyframes animation1 {
+    0% {
+      transform: translateX(0px);
+    }
+
+    90% {
+      transform: translateX(100px);
+    }
+
+    100% {
+      transform: translateX(200px);
+    }
+  }
+</style>
+<div id="object1"></div>

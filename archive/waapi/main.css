@@ -1,0 +1,39 @@
+@font-face {
+  font-family: 'GintoNordWidths';
+  src: url('fonts/ABCGintoNordWidthsVariable-Trial.woff2')
+    format('woff2-variations');
+  font-weight: 100 900;
+  font-stretch: 75% 100%;
+  font-style: oblique 0deg -12deg;
+}
+:root {
+  --fluid-16-48: clamp(1rem, 0.3043rem + 3.4783cqi, 3rem);
+}
+
+html {
+  box-sizing: border-box;
+  font-family: 'GintoNordWidths';
+  font-feature-settings: 'ss03' 1, 'ss04' 1, 'calt' 1, 'liga' 1, 'rlig' 1;
+  font-size: 62.5%;
+  color: #aed1df;
+}
+
+body {
+  background-color: #222;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-style: oblique 0deg;
+}
+
+main {
+  container-type: size;
+  font-size: var(--fluid-16-48);
+  white-space: nowrap;
+  overflow: visible;
+  margin: 0 auto;
+  padding-left: 0.5rem;
+  width: 51ch;
+}
+
+p {
+}

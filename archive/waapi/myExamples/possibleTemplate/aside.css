@@ -1,0 +1,119 @@
+aside {
+  width: 0;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: hsla(183, 90%, 0%, .5);
+  padding: 1rem .5rem;
+  font-size: 75%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+
+  display: none;
+}
+
+@media (min-width: 580px) {
+  :root {
+    --aside-size: 320px;
+  }
+
+  aside {
+    display: block;
+    width: var(--aside-size);
+  }
+
+  aside>div {
+    display: flex;
+  }
+
+  aside label {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 1.5em;
+    margin-bottom: 5px;
+    opacity: .5;
+    transition: opacity 150ms linear;
+  }
+
+  aside input {
+    margin-right: 8px;
+  }
+
+  aside input:checked+label {
+    opacity: 1;
+  }
+
+  aside p:nth-of-type(2) {
+    text-align: right;
+  }
+
+  aside p:nth-of-type(3) {
+    grid-column: 1 / 3;
+    height: 66.667%;
+    background: linear-gradient(to right, hsl(var(--hue, 4), 94%, 60%) 5px, transparent 5px);
+  }
+
+  body,
+  form {
+    padding-right: var(--aside-size);
+  }
+
+  button {
+    width: var(--aside-size);
+  }
+}
+
+form {
+  width: 100%;
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  justify-content: center;
+}
+
+button {
+  display: none;
+  margin-bottom: 1rem;
+  height: 50px;
+  appearance: none;
+  border: 4px solid hsl(153, 90%, 60%);
+  border-radius: 0;
+  background: hsla(153, 90%, 10%, .5);
+  color: hsl(153, 90%, 60%);
+  font-size: 1em;
+}
+
+button:hover {
+  transform: scale(1.025);
+}
+
+button:active {
+  transform: scale(.975);
+}
+
+button:focus {
+  outline: 2px dotted hsl(183, 100%, 50%);
+}
+
+.supported button {
+  display: block;
+}
+
+body>p {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  text-align: center;
+  line-height: 1.35;
+}
+
+.supported body>p {
+  display: none;
+}

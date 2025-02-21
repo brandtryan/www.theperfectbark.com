@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div id="canvas" data-ghosts-number="435">
+    <div class="ghost" data-channel="position">
+      <div data-channel="jumping">
+        <div class="ball"></div>
+      </div>
+    </div>
+    <div id="playback-marker" data-channel="position"></div>
+  </div>
+  <div id="preview">
+    <div data-channel="jumping">
+      <div class="ball"></div>
+    </div>
+  </div>
+  <div id="scale">
+    <span class="value" data-key="delay"></span>
+    <span class="value iterations-duration"><span data-key="iterations">1</span>&thinsp;×&thinsp;<span
+        data-key="duration">1000</span></span>
+    <span class="value" data-key="endDelay"></span>
+  </div>
+  <menu id="playback"></menu>
+  <menu id="controls"></menu>
+  <p id="result">
+    Overall: <span>1000</span>ms
+  </p>
+  <script src="script.js"></script>
+</body>
+
+</html>

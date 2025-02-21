@@ -1,0 +1,54 @@
+div {
+  width: var(--side);
+  height: var(--side);
+  background: hsl(var(--hue, 323), 70%, 55%);
+  margin: calc(var(--side) / 5) 0;
+  -webkit-clip-path: var(--path, polygon(48% 0%, 52% 0%, 52% 100%, 48% 100%));
+  clip-path: var(--path, polygon(48% 0%, 52% 0%, 52% 100%, 48% 100%));
+
+  --side: 12.5vmin;
+}
+
+input[type="range"] {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+div:nth-of-type(2) {
+  --hue: 343;
+  --path: polygon(50% 0%, 100% 100%, 0% 100%);
+}
+
+div:nth-of-type(3) {
+  --hue: 363;
+  --path: none;
+}
+
+div:nth-of-type(4) {
+  --hue: 383;
+  --path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+}
+
+div:nth-of-type(5) {
+  --hue: 403;
+  --path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+}
+
+p,
+label {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 14px;
+  padding: .5rem;
+  text-align: center;
+  display: block;
+}
+
+body {
+  background: radial-gradient(circle, hsl(223, 90%, 16%), hsl(263, 90%, 6%));
+  color: #fafcff;
+}
+
+* {
+  box-sizing: border-box;
+}

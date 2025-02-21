@@ -1,0 +1,44 @@
+#star {
+  width: var(--size);
+  height: var(--size);
+  background: hsl(var(--hue, 183), 95%, 54%);
+  margin: 5vmin;
+
+  --size: 40vmin;
+
+  -webkit-clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+
+
+
+
+
+
+/* Styles for explainer pieces: notes, body, button*/
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: hsl(223, 80%, 12%);
+  color: #fafdff;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  perspective: 100vmax;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+#star {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: hsl(223, 80%, 12%);
+}

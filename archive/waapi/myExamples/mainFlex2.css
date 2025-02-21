@@ -1,0 +1,46 @@
+@font-face {
+  font-family: "Ikarus";
+  src: url("fonts/ABCIkarusv170-VariableVF.ttf") format("truetype-variations");
+}
+
+svg,
+body {
+  background-color: black;
+  font-family: "Ikarus";
+  font-feature-settings: "calt" 1, "liga" 1, "rlig" 1, "rvrn" 1, "kern" 1, "rclt" 1;
+  font-variation-settings: "wght" 200, "wdth" 100, "ital" 0, "cont" 0;
+  color: #fff;
+  /* max-inline-size: 105ch; */
+  /* text-wrap: balance; */
+  /* -webkit-font-smoothing: antialiased; */
+  text-rendering: optimizeLegibility;
+  /* letter-spacing: 0em; */
+}
+
+.container {
+  display: flex;
+  flex-flow: row wrap;
+  writing-mode: horizontal-tb;
+  width: 1220px;
+  max-height: 90vh;
+  gap: 5px;
+  /* Center Container */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* justify content and align-content */
+  place-content: baseline space-between;
+  line-height: 40px;
+  font-size: 100%;
+  /* margin: 2% 2% 2%; */
+  background-color: rgba(141, 174, 244, 0.607);
+}
+
+.word {
+  /* display: flex; */
+  overflow: hidden;
+  /* padding: .24%; */
+  font-size: 2rem;
+  /* color: #fff; */
+}

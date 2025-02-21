@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    @font-face {
+      font-family: "Ikarus";
+      src: url("fonts/ABCIkarusv170-VariableVF.ttf") format("truetype-variations");
+    }
+
+    #object1 {
+      width: 100px;
+      height: 100px;
+      border-radius: 100%;
+      background: skyblue;
+      animation: animation1 2.5s ease infinite, animation2 0.5s ease infinite alternate;
+    }
+
+    @keyframes animation1 {
+      0% {
+        transform: translateX(0px);
+      }
+
+      25% {
+        transform: translateX(200px);
+      }
+
+      50% {
+        transform: translateX(200px) translateY(200px);
+      }
+
+      75% {
+        transform: translateX(0px) translateY(200px);
+      }
+
+      100% {
+        transform: translateX(0px) translateY(0px);
+      }
+    }
+
+    @keyframes animation2 {
+      0% {
+        border-radius: 100%;
+        background: skyblue;
+      }
+
+      100% {
+        border-radius: 0%;
+        background: red;
+      }
+    }
+  </style>
+  <div id="object1"></div>
+</head>
+
+<body>
+
+</body>
+
+</html>

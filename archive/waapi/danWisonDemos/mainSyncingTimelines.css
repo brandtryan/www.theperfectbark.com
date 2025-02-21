@@ -1,0 +1,46 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color: #e56363;
+  background: #f8f9f9;
+  font-family: Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 8rem;
+  text-align: center;
+  padding: 1rem;
+  overflow-x: hidden;
+}
+
+@media (max-width: 440px) {
+  body {
+    font-size: 4rem;
+  }
+}
+
+p {
+  display: inline-block;
+}
+
+input {
+  display: block;
+  font-size: 1.5rem;
+  line-height: 1;
+  margin: 1rem auto;
+  padding: 0.7rem;
+  border: 0;
+  background: rgba(20, 160, 200, 0.8);
+  color: #fefeff;
+  border-radius: 0.5rem;
+  border: 2px solid transparent;
+}
+
+input:hover {
+  opacity: 0.75;
+}
+
+input:focus {
+  border-color: #444;
+  outline: 0;
+}

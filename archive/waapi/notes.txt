@@ -1,0 +1,2 @@
+can only use scrubber if I use delay/endDelay values instead of assigning startTimes
+

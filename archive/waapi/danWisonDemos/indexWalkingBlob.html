@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://danielcwilson.com/js/web-animations-next-lite.min.js"></script>
+  <link href="reset.css" rel="stylesheet" />
+  <link href="main.css" rel="stylesheet" />
+</head>
+
+<body>
+
+  <div class="blob">
+    <div class="anim head"></div>
+    <div class="anim body"></div>
+    <div class="anim hand left"></div>
+    <div class="anim hand right"></div>
+    <div class="anim foot left"></div>
+    <div class="anim foot right"></div>
+  </div>
+  <div class="controls">
+    <!--div data-mapping="all">
+      <label>All</label>
+      <input type="range" min="0" max="100" />
+      <button class="pause">&#9616;&#9616;</button>
+      <button class="rate-2x">2x</button>
+    </div-->
+    <div data-mapping="head">
+      <label>Head</label>
+      <input type="range" min="0" max="100" />
+      <button class="pause">&#9616;&#9616;</button>
+      <button class="rate-2x">2x</button>
+    </div>
+    <div data-mapping="body">
+      <label>Body</label>
+      <input type="range" min="0" max="100" />
+      <button class="pause">&#9616;&#9616;</button>
+      <button class="rate-2x">2x</button>
+    </div>
+    <div data-mapping="leftHand">
+      <label>Left Hand</label>
+      <input type="range" min="0" max="100" />
+      <button class="pause">&#9616;&#9616;</button>
+      <button class="rate-2x">2x</button>
+    </div>
+    <div data-mapping="rightHand">
+      <label>Right Hand</label>
+      <input type="range" min="0" max="100" />
+      <button class="pause">&#9616;&#9616;</button>
+      <button class="rate-2x">2x</button>
+    </div>
+    <div data-mapping="leftFoot">
+      <label>Left Foot</label>
+      <input type="range" min="0" max="100" />
+      <button class="pause">&#9616;&#9616;</button>
+      <button class="rate-2x">2x</button>
+    </div>
+    <div data-mapping="rightFoot">
+      <label>Right Foot</label>
+      <input type="range" min="0" max="100" />
+      <button class="pause">&#9616;&#9616;</button>
+      <button class="rate-2x">2x</button>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+
+</html>
