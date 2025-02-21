@@ -1,3 +1,6 @@
+import { randomNumberGenerator } from "./helpers/randomNumberGenerator.mjs";
+
+
 const breathFrames = new KeyframeEffect(
   null,
   [
@@ -28,3 +31,36 @@ const sparklingDiamonds = new KeyframeEffect(
   }
 );
 
+const quiver = new KeyframeEffect(
+  null,
+  [
+    { fontVariationSettings: `"wght" 47, "wdth" 60, "ital" 0, "cont" 0` },
+    { fontVariationSettings: `"wght" 150, "wdth" 140, "ital" 12, "cont" 0` }
+  ],
+  {
+    id: "animaItalics",
+    delay: 0,
+    direction: "alternate",
+    duration: 50,
+    // easing: "cubic-bezier(0.87, 0, 0.13, 1)",
+    easing: "linear",
+    endDelay: 0,
+    fill: "none",
+    iterationStart: 0.0,
+    iterations: Infinity,
+    composite: "add",
+    iterationComposite: "replace"
+  }
+);
+
+let randomWdth = randomNumberGenerator(100, 115);
+const tremor = new KeyframeEffect(
+  null,
+  [
+    { fontVariationSettings: `"wdth" ${randomWdth}` },
+  ],
+  {
+    duration: 100,
+    iterations: Infinity
+  }
+);
