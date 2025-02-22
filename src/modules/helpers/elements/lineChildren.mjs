@@ -1,4 +1,4 @@
-import { lines } from "../elements.mjs";
+import { lines } from "./elements.mjs";
 
 export const lineChildrenArrays = [];
 

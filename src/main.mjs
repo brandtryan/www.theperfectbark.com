@@ -1,7 +1,5 @@
-import { createAndPlayAnimation } from "./modules/helpers/createAndPlayAnimation.mjs";
-import { sections, lines, words, lineElements } from "./modules/elements.mjs";
-
-const pElements = [...lines];
+import { createAndPlayAnimation } from "./modules/helpers/animation/createAndPlayAnimation";
+import { sections, lines as lineElements, words } from "./modules/helpers/elements/elements";
 
 document.addEventListener('DOMContentLoaded', () => {
   //HTML has loaded
@@ -15,7 +13,7 @@ const wordAnimations = words.map((word) => {
 });
 
 
-pElements.forEach((line) => {
+lineElements.forEach((line) => {
   let arrayName = `${line.id}Animations`;
 
   window[arrayName] = [];
