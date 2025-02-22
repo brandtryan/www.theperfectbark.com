@@ -1,36 +1,28 @@
-import { createAndPlayAnimation } from "./modules/helpers/animation/createAndPlayAnimation";
-import { sections, lines as lineElements, words } from "./modules/helpers/elements/elements";
+
+import { wordsArray as wordElements } from "./modules/helpers/elements/elements.mjs";
+import { lineWordCountsArray } from "./modules/helpers/animation/lineWordCountsArray.mjs";
+import { wordAnimations } from "./modules/wordAnimations.mjs";
+import "./modules/helpers/animation/createAndPlayAnimation.mjs"
+import "./modules/helpers/animation/lineAnimationsArrays.mjs";
+import { s00Animations } from "./modules/setStartTimes.mjs";
 
 document.addEventListener('DOMContentLoaded', () => {
   //HTML has loaded
   console.log('Main.js and the DOM are loaded');
 });
 
-// Create animations for all words
-const wordAnimations = words.map((word) => {
-  const wordAnimation = createAndPlayAnimation(word);
-  return wordAnimation;
-});
+[...wordElements]
+  .filter((_, index) => index % 2 === 0)
+  .map(element => element.setAttribute('data-enable', 'false'));
 
-
-lineElements.forEach((line) => {
-  let arrayName = `${line.id}Animations`;
-
-  window[arrayName] = [];
-
-  wordAnimations.forEach((wordAnimation) => {
-    if (wordAnimation.id.includes(`${line.id}`)) {
-      window[arrayName].push(wordAnimation);
-    }
-  })
-
-  console.log(`Array ${arrayName} now contains ${window[arrayName].length} animations.`);
-});
-
+// for (let i = 0; i < wordElements.length; i++) {
+//   if (i % 2 === 0) {
+//     wordElements[i].setAttribute('data-enable', 'false');
+//   }
+// }
 
 // Pause all word animations
-wordAnimations.forEach(animation => animation?.pause());
-
+// wordAnimations.forEach(animation => animation?.pause());
 
 // Play all word animations
 // wordAnimations.forEach(animation => animation?.play());

@@ -1,6 +1,6 @@
 // Helper function to create and start animation
 export function createAndPlayAnimation(element) {
-  if (!element || element.dataset.enable === 'false') return null;
+  if (!element) return null;
 
   const frames = JSON.parse(element.dataset.frames);
   const options = {
@@ -23,7 +23,9 @@ export function createAndPlayAnimation(element) {
   Animation.currentTime = parseFloat(element.dataset.currentTime);
   Animation.startTime = parseFloat(element.dataset.startTime);
 
-  if (element.nodeName.toUpperCase() === 'SPAN' || element.nodeName.toUpperCase() === 'P') {
+  if (element.nodeName.toUpperCase() === 'SPAN'
+    || element.nodeName.toUpperCase() === 'P'
+    && element.getAttribute('data-enable') === 'true') {
     element.addEventListener('mouseenter', () => {
       animation.play();
     });
