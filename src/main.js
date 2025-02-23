@@ -1,9 +1,9 @@
-import { wordsArray } from "./modules/elements.mjs";
-import { lineWordCountsArray } from "./modules/lineWordCountsArray.mjs";
-import { wordAnimations } from "./modules/wordAnimations.mjs";
-import "./modules/createAndPlayAnimation.mjs";
-import "./modules/lineAnimationsArrays.mjs";
-import { s00Animations } from "./modules/setStartTimes.mjs";
+import { wordsArray } from "./modules/elements.js";
+import { lineWordCountsArray } from "./modules/lineWordCountsArray.js";
+import { wordAnimations } from "./modules/wordAnimations.js";
+import "./modules/createAndPlayAnimation.js";
+import "./modules/lineAnimationsArrays.js";
+import { s00Animations } from "./modules/setStartTimes.js";
 
 document.addEventListener('DOMContentLoaded', () => {
   //HTML has loaded

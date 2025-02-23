@@ -1,5 +1,5 @@
-import { words } from "./elements.mjs"
-import { createAndPlayAnimation } from "./createAndPlayAnimation.mjs"
+import { words } from "./elements.js"
+import { createAndPlayAnimation } from "./createAndPlayAnimation.js"
 
 export let wordAnimations;
 

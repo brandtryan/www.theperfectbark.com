@@ -1,5 +1,4 @@
-import { randomNumberGenerator } from "./helpers/randomNumberGenerator.mjs";
-
+import { randomNumberGenerator } from "./randomNumberGenerator";
 
 const breathFrames = new KeyframeEffect(
   null,

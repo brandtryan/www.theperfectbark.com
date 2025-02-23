@@ -1,5 +1,5 @@
-import { lines as lineElements } from "../elements/elements.mjs";
-import { wordAnimations } from "../../wordAnimations.mjs";
+import { lines as lineElements } from "../elements/elements.js";
+import { wordAnimations } from "../../wordAnimations.js";
 
 lineElements.forEach((line) => {
   let arrayName = `${line.id}Animations`;

@@ -1,5 +1,5 @@
-import { lines } from "../elements/elements.mjs";
-import { lineWordCounts } from "../elements/lineWordCounts.mjs";
+import { lines } from "../elements/elements.js";
+import { lineWordCounts } from "../elements/lineWordCounts.js";
 
 export const lineReadingTimesArray = lines.map((index) => {
   const time = lineWordCounts[index] / 225 * 60;
