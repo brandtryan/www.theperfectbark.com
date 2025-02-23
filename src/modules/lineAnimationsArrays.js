@@ -1,9 +1,9 @@
-import { linesArray } from "./elements.js";
+import { lines } from "./elements.js";
 import { wordAnimations } from "./wordAnimations.js";
 
-const lineElements = [...linesArray];
+// export const lineAnimationsArrays = [...lines];
 
-lineElements.forEach((line) => {
+lines.forEach((line) => {
   let arrayName = `${line.id}Animations`;
 
   window[arrayName] = [];

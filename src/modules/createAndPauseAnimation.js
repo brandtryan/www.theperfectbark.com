@@ -1,5 +1,5 @@
-// Helper function to create and start animation
-export function createAndPyAnimation(element) {
+// Helper function to create and pause animation
+export function createAndPauseAnimation(element) {
   if (!element || element.dataset.enable === 'false') return null;
 
   const frames = JSON.parse(element.dataset.frames);
@@ -18,12 +18,11 @@ export function createAndPyAnimation(element) {
   const effect = new KeyframeEffect(element, frames, options);
   const animation = new Animation(effect, document.timeline);
   animation.id = element.id + 'Animation';
+  animation.pause();
 
   Animation.playbackRate = parseFloat(element.dataset.playbackRate);
   Animation.currentTime = parseFloat(element.dataset.currentTime);
   Animation.startTime = parseFloat(element.dataset.startTime);
-
-  animation.pause();
 
   return animation;
 }

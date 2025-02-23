@@ -1,26 +1,38 @@
-import "./modules/createAndPlayAnimation.js";
-import "./modules/lineAnimationsArrays.js";
-import { wordsArray } from "./modules/elements.js";
+// import "./modules/createAndPlayAnimation.js";
+import { lineReadingTimesArray } from "./modules/lineReadingTimes.js";
+import { words } from "./modules/elements.js";
+// import { wordAnimations } from "./modules/wordAnimations.js";
+import { createAndPauseAnimation } from "./modules/createAndPauseAnimation.js";
+import { iterateOverStartTime } from "./modules/iterateOverStartTime.js";
+
+// let wordAnimations;
 
 document.addEventListener('DOMContentLoaded', () => {
-  //HTML has loaded
+  // HTML has loaded
   console.log('Main.js and the DOM are loaded');
+
+  // Modify data-enable attribute on half of animations
+  words
+    .filter((_, index) => index % 2 === 0)
+    .map(element => element.setAttribute('data-enable', 'false'));
+  console.log(`[data-enable] attribute set to "false" on
+    half of animated elements for testing purposes.`);
+
+  const wordAnimations = words
+    .filter(w => w.dataset.enable === 'true')
+    .map(w => createAndPauseAnimation(w));
+  console.log('All word animations created.');
+
+  // set startTimes
+  iterateOverStartTime(wordAnimations);
+  console.log("Animation startTimes set.");
+
 });
 
-// [...wordsArray]
-wordsArray
-  .filter((_, index) => index % 2 === 0)
-  .map(element => element.setAttribute('data-enable', 'false'));
-
-
-// for (let i = 0; i < wordElements.length; i++) {
-//   if (i % 2 === 0) {
-//     wordElements[i].setAttribute('data-enable', 'false');
-//   }
-// }
 
 // Pause all word animations
 // wordAnimations.forEach(animation => animation?.pause());
+
 
 // Play all word animations
 // wordAnimations.forEach(animation => animation?.play());

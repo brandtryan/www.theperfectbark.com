@@ -1,4 +1,4 @@
-export const iterateOverStartTime = function (arrayOfAnimations) {
+export function iterateOverStartTime(arrayOfAnimations) {
   // Calculate the start time for the first animation
   let startTime = document.timeline.currentTime + 100;
 
@@ -7,4 +7,5 @@ export const iterateOverStartTime = function (arrayOfAnimations) {
     animation.startTime = startTime; // Set the start time for the animation
     startTime += 100; // Increment the start time for the next animation
   });
+
 }
