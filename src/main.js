@@ -1,16 +1,14 @@
-import { wordsArray } from "./modules/elements.js";
-import { lineWordCountsArray } from "./modules/lineWordCountsArray.js";
-import { wordAnimations } from "./modules/wordAnimations.js";
 import "./modules/createAndPlayAnimation.js";
 import "./modules/lineAnimationsArrays.js";
-import { s00Animations } from "./modules/setStartTimes.js";
+import { wordsArray } from "./modules/elements.js";
 
 document.addEventListener('DOMContentLoaded', () => {
   //HTML has loaded
   console.log('Main.js and the DOM are loaded');
 });
 
-[...wordsArray]
+// [...wordsArray]
+wordsArray
   .filter((_, index) => index % 2 === 0)
   .map(element => element.setAttribute('data-enable', 'false'));
 
