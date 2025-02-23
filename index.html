@@ -10,7 +10,7 @@
         content="width=device-width, initial-scale=1.0" />
   <title>The Perfect Bark</title>
   <link rel="preload"
-        href="./src/assets/Ikarus.woff2"
+        href="src/assets/Ikarus.woff2"
         as="font"
         type="font/woff2"
         crossorigin="anonymous">
@@ -18,9 +18,8 @@
         href="src/assets/css/normalize.css">
   <link rel="stylesheet"
         href="src/assets/css/style.css">
-  <!-- <link rel="modulepreload" href="./src/modules/helpers/elements/elements.mjs"> -->
-  <link rel="modulepreload" href="./src/modules/helpers/animation/createAndPlayAnimation.mjs">
-  <!-- <script src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js"></script> -->
+  <link rel="modulepreload"
+        href="src/modules/wordAnimations.mjs">
 </head>
 
 <body>
@@ -62,7 +61,7 @@
        data-start-time="0">
 
       <span id="s00l00w00"
-            data-enable="false"
+            data-enable="true"
             data-frames='[{"fontVariationSettings": "\"wght\" 900, \"wdth\" 60, \"ital\" 12, \"cont\" 100"},
                         {"fontVariationSettings": "\"wght\" 300, \"wdth\" 100, \"ital\" 0, \"cont\" 0"}]'
             data-delay="50"
@@ -80,7 +79,7 @@
             data-start-time="0">My</span>
 
       <span id="s00l00w01"
-            data-enable="false"
+            data-enable="true"
             data-frames='[{"fontVariationSettings": "\"wght\" 900, \"wdth\" 60, \"ital\" 12, \"cont\" 100"},
                         {"fontVariationSettings": "\"wght\" 300, \"wdth\" 100, \"ital\" 0, \"cont\" 0"}]'
             data-delay="50"
@@ -65755,8 +65754,7 @@
             data-start-time="0">it.</span>
     </p>
   </section>
-  <script type="module"
-          src="/src/main.mjs"></script>
+  <script src="src/main.mjs" type="module" defer></script>
 </body>
 
 </html>

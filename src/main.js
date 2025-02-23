@@ -1,9 +1,8 @@
-
-import { wordsArray as wordElements } from "./modules/helpers/elements/elements.mjs";
-import { lineWordCountsArray } from "./modules/helpers/animation/lineWordCountsArray.mjs";
+import { wordsArray } from "./modules/elements.mjs";
+import { lineWordCountsArray } from "./modules/lineWordCountsArray.mjs";
 import { wordAnimations } from "./modules/wordAnimations.mjs";
-import "./modules/helpers/animation/createAndPlayAnimation.mjs"
-import "./modules/helpers/animation/lineAnimationsArrays.mjs";
+import "./modules/createAndPlayAnimation.mjs";
+import "./modules/lineAnimationsArrays.mjs";
 import { s00Animations } from "./modules/setStartTimes.mjs";
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -11,9 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('Main.js and the DOM are loaded');
 });
 
-[...wordElements]
+[...wordsArray]
   .filter((_, index) => index % 2 === 0)
   .map(element => element.setAttribute('data-enable', 'false'));
+
 
 // for (let i = 0; i < wordElements.length; i++) {
 //   if (i % 2 === 0) {
