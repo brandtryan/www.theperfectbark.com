@@ -20,7 +20,6 @@ const wordAnimations = words
 // set startTimes (for sequence testing at the moment)
 iterateOverStartTime(wordAnimations);
 console.log("Animation startTimes set.");
-console.log(sections.length);
 
 
 // // Create animations for all lines
