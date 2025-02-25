@@ -70,9 +70,9 @@ section {
   padding: 0;
   scroll-snap-stop: always;
   /* border: 2px dotted cornflowerblue; */
-  animation: reveal linear forwards;
-  animation-timeline: view();
-  animation-range: entry 40vh;
+  /* animation: reveal linear forwards; */
+  /* animation-timeline: view(); */
+  /* animation-range: entry 40vh; */
 }
 
 @keyframes reveal {

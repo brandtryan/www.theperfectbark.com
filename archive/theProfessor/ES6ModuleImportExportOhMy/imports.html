@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Imports and Exports</title>
+  <meta name="viewport" content="width=device-width">
+</head>
+
+<body>
+  <header>
+    <h1>Imports and Exports</h1>
+  </header>
+  <main>
+    <pre id="output"></pre>
+  </main>
+  <script type="module">
+    //this script should be external
+    //when not external... needs type="module"
+
+    /**************************************
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import
+    
+    import defaultExport from "module-name";
+    import * as name from "module-name";
+    import { export } from "module-name";
+    import { export as alias } from "module-name";
+    import { export1 , export2 } from "module-name";
+    import { export1 , export2 as alias2 , [...] } from "module-name";
+    import defaultExport, { export [ , [...] ] } from "module-name";
+    import defaultExport, * as name from "module-name";
+    import "module-name";
+    var promise = import(module-name);
+    *************************************/
+    import { myFunc, myFunc2, x } from "./bubba.js";
+
+    console.log(myFunc(6));
+
+    console.log(myFunc2(4));
+
+    console.log(x(3));
+  </script>
+</body>
+
+</html>

@@ -8,4 +8,8 @@ export function iterateOverStartTime(arrayOfAnimations) {
     startTime += 100; // Increment the start time for the next animation
   });
 
+  arrayOfAnimations.forEach((animation) => {
+    animation.pause();
+  })
+
 }

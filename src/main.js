@@ -1,11 +1,6 @@
-// import "./modules/createAndPlayAnimation.js";
-import { lineReadingTimesArray } from "./modules/lineReadingTimes.js";
-import { words } from "./modules/elements.js";
-// import { wordAnimations } from "./modules/wordAnimations.js";
-import { createAndPauseAnimation } from "./modules/createAndPauseAnimation.js";
-import { iterateOverStartTime } from "./modules/iterateOverStartTime.js";
-
-// let wordAnimations;
+import {
+  words, sections, createAndPauseAnimation, iterateOverStartTime, sectionTimelines
+} from './modules/parentModule.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // HTML has loaded
@@ -14,28 +9,18 @@ document.addEventListener('DOMContentLoaded', () => {
   // Modify data-enable attribute on half of animations
   words
     .filter((_, index) => index % 2 === 0)
-    .map(element => element.setAttribute('data-enable', 'false'));
-  console.log(`[data-enable] attribute set to "false" on
-    half of animated elements for testing purposes.`);
-
-  const wordAnimations = words
-    .filter(w => w.dataset.enable === 'true')
-    .map(w => createAndPauseAnimation(w));
-  console.log('All word animations created.');
-
-  // set startTimes
-  iterateOverStartTime(wordAnimations);
-  console.log("Animation startTimes set.");
-
+    .map(w => w.setAttribute('data-enable', 'false'));
 });
 
+// create word animations and push to wordAnimations array
+const wordAnimations = words
+  .filter(w => w.getAttribute('data-enable') === 'true')
+  .map(w => createAndPauseAnimation(w));
 
-// Pause all word animations
-// wordAnimations.forEach(animation => animation?.pause());
-
-
-// Play all word animations
-// wordAnimations.forEach(animation => animation?.play());
+// set startTimes (for sequence testing at the moment)
+iterateOverStartTime(wordAnimations);
+console.log("Animation startTimes set.");
+console.log(sections.length);
 
 
 // // Create animations for all lines

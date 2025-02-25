@@ -1,4 +1,5 @@
-// Helper function to create and pause animation
+import { sections, sectionTimelines } from './parentModule.js';
+
 export function createAndPauseAnimation(element) {
   if (!element || element.dataset.enable === 'false') return null;
 
@@ -16,8 +17,33 @@ export function createAndPauseAnimation(element) {
   };
 
   const effect = new KeyframeEffect(element, frames, options);
-  const animation = new Animation(effect, document.timeline);
+  const animation = new Animation(effect);
   animation.id = element.id + 'Animation';
+
+  for (let i = 0; i < 35; i++) {
+    sectionTimelines.push({ name: `s${i.toString().padStart(2, '0')}Timeline` });
+  }
+
+  sections.forEach(section => {
+    const timelineName = section.dataset.timeline;
+    const timeline = sectionTimelines.find(tl => tl.name === timelineName);
+
+    if (timeline) {
+      const animation = { timeline: null };
+      animation.timeline = timeline.name;
+      console.log(`Assigned timeline ${timeline.name} to section with data-timeline ${timelineName}`);
+    } else {
+      console.error(`No matching timeline found for data-timeline: ${timelineName}`);
+    }
+  });
+
+  // Example of how to access the timelines later if needed:
+  const timelineLookup = {};
+  sectionTimelines.forEach(timeline => {
+    timelineLookup[timeline.name] = timeline;
+  });
+
+  animation.play();
   animation.pause();
 
   Animation.playbackRate = parseFloat(element.dataset.playbackRate);
