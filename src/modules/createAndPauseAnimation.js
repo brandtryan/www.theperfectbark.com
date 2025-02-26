@@ -43,7 +43,7 @@ export function createAndPauseAnimation(element) {
   //   timelineLookup[timeline.name] = timeline;
   // });
 
-  animation.play();
+  // animation.play();
   animation.pause();
 
   Animation.playbackRate = parseFloat(element.dataset.playbackRate);
