@@ -7,6 +7,8 @@ class MovingText extends HTMLElement {
     // shadowRoot - container that holds our element in isolation
     const shadowRoot = this.attachShadow({ mode: 'open' });
     // add some persistent html
+    // content in here defines the nature of our element, the defaults,
+    // the reason for which we created the component
     let div = document.createElement('div');
     div.textContent = 'Persistent div from constructor function';
     // attach html to shadowRoot
@@ -17,3 +19,5 @@ class MovingText extends HTMLElement {
 customElements.define('moving-text', MovingText);
 // <moving-text> - every time you add one to the page, the constructor
 // is run.
+
+// (pre-slot) anything put in between our opening and  closing tags is meaningless
