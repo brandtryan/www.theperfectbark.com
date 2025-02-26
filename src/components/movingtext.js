@@ -1,18 +1,25 @@
 //This file will be the web component
 //It only needs to run, not be imported by main.js
 
+const template = document.createElement('template');
+template.innerHTML = `
+  <div>
+    <h2>H2 from template</h2>
+  </div>
+`;
+
 class MovingText extends HTMLElement {
   constructor() {
     super();
-    // shadowRoot - container that holds our element in isolation
     const shadowRoot = this.attachShadow({ mode: 'open' });
-    // add some persistent html
-    // content in here defines the nature of our element, the defaults,
-    // the reason for which we created the component
-    let div = document.createElement('div');
-    div.textContent = 'Persistent div from constructor function';
-    // attach html to shadowRoot
-    shadowRoot.append(div);
+    // let div = document.createElement('div');
+    // div.textContent = 'Persistent div from constructor function';
+    // shadowRoot.append(div);
+
+    // how do you get content into the element a different way?
+    // A Template (see above)
+    let clone = template.content.cloneNode(true);
+    shadowRoot.append(clone);
   }
 }
 
