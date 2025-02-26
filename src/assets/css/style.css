@@ -42,19 +42,16 @@ cont 0 100 100
   scroll-snap-type: x mandatory;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-    font-weight: 400;
-  }
+* {
+  padding: 0;
+  margin: 0;
 }
 
 html {
   font-weight: 300;
 }
 
-section {
+div {
   place-content: center;
   place-self: center;
   width: 49ch;
@@ -63,11 +60,8 @@ section {
   contain-intrinsic-width: 48ch;
   contain-intrinsic-height: 100vh;
   font-size: clamp(1.4rem, 0.75vw + 1.24rem, 2.2rem);
-  margin: 0 auto;
   white-space: nowrap;
   overflow: visible;
-  margin: 0;
-  padding: 0;
   scroll-snap-stop: always;
   /* border: 2px dotted cornflowerblue; */
   /* animation: reveal linear forwards; */
@@ -75,7 +69,7 @@ section {
   /* animation-range: entry 40vh; */
 }
 
-@keyframes reveal {
+/* @keyframes reveal {
   from {
     scale: .01;
     opacity: 0;
@@ -85,12 +79,7 @@ section {
     scale: 1;
     opacity: 1;
   }
-}
-
-p {
-  margin: 0;
-  /* border: 1px solid coral; */
-}
+} */
 
 span:hover::after {
   content: attr(id);

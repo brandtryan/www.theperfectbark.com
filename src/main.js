@@ -1,5 +1,5 @@
 import {
-  words, sections, createAndPauseAnimation, iterateOverStartTime, sectionTimelines
+  words, movingTextElements, createAndPauseAnimation, iterateOverStartTime, sectionTimelines
 } from './modules/parentModule.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -21,6 +21,7 @@ const wordAnimations = words
 iterateOverStartTime(wordAnimations);
 console.log("Animation startTimes set.");
 
+console.log(movingTextElements[0]);
 
 // // Create animations for all lines
 // const lineAnimations = lines.map((line, index) => {
