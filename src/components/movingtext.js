@@ -6,8 +6,8 @@ template.innerHTML = `
   <style>
   @import url('www.theperfectbark.com/src/assets/css/normalize.css');
   @import url('www.theperfectbark.com/src/assets/css/style.css');
-  div {
-    place-self: center; 
+  :host {
+    height: 150vh; 
   }
   </style>
   <div>
