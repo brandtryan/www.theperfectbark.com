@@ -1,46 +1,137 @@
-export function findMovingTextSlots() {
+export function movingTextSlotFinder() {
 
   // Get all instances of the 'moving-text' web component
-  const movingTextComponents = document.querySelectorAll('moving-text');
+  // const movingTextComponents = document.querySelectorAll('moving-text');
+  const myComponent = document.querySelector('moving-text');
 
-  movingTextComponents.forEach(myComponent => {
-    const shadowRoot = myComponent.shadowRoot;
+  // movingTextComponents.forEach(myComponent => {
+  //   const shadowRoot = myComponent.shadowRoot;
+  // movingTextComponents.forEach(myComponent => {
+  const shadowRoot = myComponent.shadowRoot;
 
-    // Find the slot element with the name "my-slot-name" within this specific component
-    const l00 = shadowRoot.querySelector('slot[name="l00"]');
-    const l01 = shadowRoot.querySelector('slot[name="l01"]');
-    const l02 = shadowRoot.querySelector('slot[name="l02"]');
-    const l03 = shadowRoot.querySelector('slot[name="l03"]');
-    const l04 = shadowRoot.querySelector('slot[name="l03"]');
-    const l05 = shadowRoot.querySelector('slot[name="l03"]');
-    const l06 = shadowRoot.querySelector('slot[name="l03"]');
-    const l07 = shadowRoot.querySelector('slot[name="l03"]');
-    const l08 = shadowRoot.querySelector('slot[name="l03"]');
-    const l09 = shadowRoot.querySelector('slot[name="l03"]');
-    const l10 = shadowRoot.querySelector('slot[name="l03"]');
-    const l11 = shadowRoot.querySelector('slot[name="l03"]');
-    const l12 = shadowRoot.querySelector('slot[name="l03"]');
-    const l13 = shadowRoot.querySelector('slot[name="l03"]');
-    const l14 = shadowRoot.querySelector('slot[name="l03"]');
-    const l15 = shadowRoot.querySelector('slot[name="l03"]');
-    const l16 = shadowRoot.querySelector('slot[name="l03"]');
-    const l17 = shadowRoot.querySelector('slot[name="l03"]');
-    const l18 = shadowRoot.querySelector('slot[name="l03"]');
+  // Find the slot element with the name "my-slot-name" within this specific component
+  const s00l00 = shadowRoot.querySelector('slot[name="s00l00"]');
+  const s00l01 = shadowRoot.querySelector('slot[name="s00l01"]');
+  const s00l02 = shadowRoot.querySelector('slot[name="s00l02"]');
+  const s00l03 = shadowRoot.querySelector('slot[name="s00l03"]');
+  const s00l04 = shadowRoot.querySelector('slot[name="s00l04"]');
+  const s00l05 = shadowRoot.querySelector('slot[name="s00l05"]');
+  const s00l06 = shadowRoot.querySelector('slot[name="s00l06"]');
+  const s00l07 = shadowRoot.querySelector('slot[name="s00l07"]');
+  const s00l08 = shadowRoot.querySelector('slot[name="s00l08"]');
 
-    if (l00) {
+  switch (myComponent) {
+    case s00l00:
       console.log('Found the slot in component:', myComponent);
-      console.log('Slot element:', l00);
+      console.log('Slot element:', s00l00);
 
-      const l00AssignedNodes = l00.assignedNodes();
-      console.log("assigned nodes:", l00AssignedNodes);
-    } else {
-      console.log('Slot not found in component:', myComponent);
-    }
+      const s00l00AssignedNodes = s00l00.assignedNodes();
+      console.log("assigned nodes:", s00l00AssignedNodes);
 
-    // To find elements that are assigned to the slot from the light DOM for THIS component.
-    const lightDomElements = myComponent.querySelectorAll('[slot="l00"]');
-    console.log("light dom elements for component:", myComponent, lightDomElements);
-  });
+      const lightDomElements = myComponent.querySelectorAll('[slot="s00l00"]');
+      console.log("light dom elements for component:", myComponent, lightDomElements);
+      break;
+    case s00l01:
+      console.log('Found the slot in component:', myComponent);
+      console.log('Slot element:', s00l01);
+
+      const s00l01AssignedNodes = s00l01.assignedNodes();
+      console.log("assigned nodes:", s00l01AssignedNodes);
+
+      const s00l01LightDomElements = myComponent.querySelectorAll('[slot="s00l01"]');
+      console.log("light dom elements for component:", myComponent, s00l01LightDomElements);
+      break;
+    case s00l02:
+      console.log('Found the slot in component:', myComponent);
+      console.log('Slot element:', s00l02);
+
+      const s00l02AssignedNodes = s00l02.assignedNodes();
+      console.log("assigned nodes:", s00l02AssignedNodes);
+
+      const s00l02LightDomElements = myComponent.querySelectorAll('[slot="s00l02"]');
+      console.log("light dom elements for component:", myComponent, s00l02LightDomElements);
+      break;
+    case s00l03:
+      console.log('Found the slot in component:', myComponent);
+      console.log('Slot element:', s00l03);
+
+      const s00l03AssignedNodes = s00l03.assignedNodes();
+      console.log("assigned nodes:", s00l03AssignedNodes);
+
+      const s00l03LightDomElements = myComponent.querySelectorAll('[slot="s00l03"]');
+      console.log("light dom elements for component:", myComponent, s00l03LightDomElements);
+      break;
+    case s00l04:
+      console.log('Found the slot in component:', myComponent);
+      console.log('Slot element:', s00l04);
+
+      const s00l04AssignedNodes = s00l04.assignedNodes();
+      console.log("assigned nodes:", s00l04AssignedNodes);
+
+      const s00l04LightDomElements = myComponent.querySelectorAll('[slot="s00l04"]');
+      console.log("light dom elements for component:", myComponent, s00l04LightDomElements);
+      break;
+    case s00l05:
+      console.log('Found the slot in component:', myComponent);
+      console.log('Slot element:', s00l05);
+
+      const s00l05AssignedNodes = s00l05.assignedNodes();
+      console.log("assigned nodes:", s00l05AssignedNodes);
+
+      const s00l05LightDomElements = myComponent.querySelectorAll('[slot="s00l05"]');
+      console.log("light dom elements for component:", myComponent, s00l05LightDomElements);
+      break;
+    case s00l06:
+      console.log('Found the slot in component:', myComponent);
+      console.log('Slot element:', s00l06);
+
+      const s00l06AssignedNodes = s00l06.assignedNodes();
+      console.log("assigned nodes:", s00l06AssignedNodes);
+
+      const s00l06LightDomElements = myComponent.querySelectorAll('[slot="s00l06"]');
+      console.log("light dom elements for component:", myComponent, s00l06LightDomElements);
+      break;
+    case s00l07:
+      console.log('Found the slot in component:', myComponent);
+      console.log('Slot element:', s00l07);
+
+      const s00l07AssignedNodes = s00l07.assignedNodes();
+      console.log("assigned nodes:", s00l07AssignedNodes);
+
+      const s00l07LightDomElements = myComponent.querySelectorAll('[slot="s00l07"]');
+      console.log("light dom elements for component:", myComponent, s00l07LightDomElements);
+      break;
+    case s00l08:
+      console.log('Found the slot in component:', myComponent);
+      console.log('Slot element:', s00l08);
+
+      const s00l08AssignedNodes = s00l08.assignedNodes();
+      console.log("assigned nodes:", s00l08AssignedNodes);
+
+      const s00l08LightDomElements = myComponent.querySelectorAll('[slot="s00l08"]');
+      console.log("light dom elements for component:", myComponent, s00l08LightDomElements);
+      break;
+
+    default: console.log('Slot not found in component:', myComponent);
+  }
+
+  // To find elements that are assigned to the slot from the light DOM for THIS component.
+  // });
+
+  //   if (l00) {
+  //     console.log('Found the slot in component:', myComponent);
+  //     console.log('Slot element:', l00);
+
+  //     const l00AssignedNodes = l00.assignedNodes();
+  //     console.log("assigned nodes:", l00AssignedNodes);
+  //   } else {
+  //     console.log('Slot not found in component:', myComponent);
+  //   }
+
+  //   // To find elements that are assigned to the slot from the light DOM for THIS component.
+  //   const lightDomElements = myComponent.querySelectorAll('[slot="l00"]');
+  //   console.log("light dom elements for component:", myComponent, lightDomElements);
+  // });
 };
 
 // const l00w00 = shadowRoot.querySelector('slot[name="l00w00"]');
@@ -60,22 +151,22 @@ export function findMovingTextSlots() {
 // const l00w14 = shadowRoot.querySelector('slot[name="l00w14"]');
 // const l00w15 = shadowRoot.querySelector('slot[name="l00w15"]');
 
-// const l01w00 = shadowRoot.querySelector('slot[name="l01w00"]');
-// const l01w01 = shadowRoot.querySelector('slot[name="l01w01"]');
-// const l01w02 = shadowRoot.querySelector('slot[name="l01w02"]');
-// const l01w03 = shadowRoot.querySelector('slot[name="l01w03"]');
-// const l01w04 = shadowRoot.querySelector('slot[name="l01w04"]');
-// const l01w05 = shadowRoot.querySelector('slot[name="l01w05"]');
-// const l01w06 = shadowRoot.querySelector('slot[name="l01w06"]');
-// const l01w07 = shadowRoot.querySelector('slot[name="l01w07"]');
-// const l01w08 = shadowRoot.querySelector('slot[name="l01w08"]');
-// const l01w09 = shadowRoot.querySelector('slot[name="l01w09"]');
-// const l01w10 = shadowRoot.querySelector('slot[name="l01w10"]');
-// const l01w11 = shadowRoot.querySelector('slot[name="l01w11"]');
-// const l01w12 = shadowRoot.querySelector('slot[name="l01w12"]');
-// const l01w13 = shadowRoot.querySelector('slot[name="l01w13"]');
-// const l01w14 = shadowRoot.querySelector('slot[name="l01w14"]');
-// const l01w15 = shadowRoot.querySelector('slot[name="l01w15"]');
+// const l03w00 = shadowRoot.querySelector('slot[name="l03w00"]');
+// const l03w01 = shadowRoot.querySelector('slot[name="l03w01"]');
+// const l03w02 = shadowRoot.querySelector('slot[name="l03w02"]');
+// const l03w03 = shadowRoot.querySelector('slot[name="l03w03"]');
+// const l03w04 = shadowRoot.querySelector('slot[name="l03w04"]');
+// const l03w05 = shadowRoot.querySelector('slot[name="l03w05"]');
+// const l03w06 = shadowRoot.querySelector('slot[name="l03w06"]');
+// const l03w07 = shadowRoot.querySelector('slot[name="l03w07"]');
+// const l03w08 = shadowRoot.querySelector('slot[name="l03w08"]');
+// const l03w09 = shadowRoot.querySelector('slot[name="l03w09"]');
+// const l03w10 = shadowRoot.querySelector('slot[name="l03w10"]');
+// const l03w11 = shadowRoot.querySelector('slot[name="l03w11"]');
+// const l03w12 = shadowRoot.querySelector('slot[name="l03w12"]');
+// const l03w13 = shadowRoot.querySelector('slot[name="l03w13"]');
+// const l03w14 = shadowRoot.querySelector('slot[name="l03w14"]');
+// const l03w15 = shadowRoot.querySelector('slot[name="l03w15"]');
 
 // const l02w00 = shadowRoot.querySelector('slot[name="l02w00"]');
 // const l02w01 = shadowRoot.querySelector('slot[name="l02w01"]');
