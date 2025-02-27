@@ -3,17 +3,28 @@
 
 const template = document.createElement('template');
 template.innerHTML = `
+  <style>
+  @import url('www.theperfectbark.com/src/assets/css/normalize.css');
+  @import url('www.theperfectbark.com/src/assets/css/style.css');
+  div {
+    place-self: center; 
+  }
+  </style>
   <div>
-    <slot name="line09">Default Text</slot>
-    <slot name="line00"></slot>
-    <slot name="line01"></slot>
-    <slot name="line02"></slot>
-    <slot name="line03"></slot>
-    <slot name="line04"></slot>
-    <slot name="line05"></slot>
-    <slot name="line06"></slot>
-    <slot name="line07"></slot>
-    <slot name="line08"></slot>
+    <slot name="line00">
+      <slot name="word00>word</slot> 
+      <slot name="word01>word</slot> 
+      <slot name="word02>word</slot> 
+      <slot name="word03>word</slot> 
+      <slot name="word04>word</slot> 
+      <slot name="word05>word</slot> 
+      <slot name="word06>word</slot> 
+      <slot name="word07>word</slot> 
+      <slot name="word08>word</slot> 
+      <slot name="word09>word</slot> 
+      <slot name="word10>word</slot> 
+      <slot name="word11>word</slot> 
+    </slot>
   </div>
 `;
 

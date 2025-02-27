@@ -42,19 +42,7 @@ cont 0 100 100
   scroll-snap-type: x mandatory;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-    font-weight: 400;
-  }
-}
-
-html {
-  font-weight: 300;
-}
-
-section {
+:host(moving-text) {
   place-content: center;
   place-self: center;
   width: 49ch;
@@ -63,6 +51,7 @@ section {
   contain-intrinsic-width: 48ch;
   contain-intrinsic-height: 100vh;
   font-size: clamp(1.4rem, 0.75vw + 1.24rem, 2.2rem);
+  font-weight: 300;
   margin: 0 auto;
   white-space: nowrap;
   overflow: visible;
@@ -89,7 +78,6 @@ section {
 
 p {
   margin: 0;
-  /* border: 1px solid coral; */
 }
 
 span:hover::after {
