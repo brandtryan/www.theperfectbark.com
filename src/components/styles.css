@@ -64,8 +64,10 @@ div {
   /* animation-range: entry 40vh; */
 }
 
-p {
+::slotted p {
   margin: 0;
+  display: block;
+  border: 1px solid lightgreen;
 }
 
 span:hover::after {
