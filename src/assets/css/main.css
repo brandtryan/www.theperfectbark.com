@@ -15,7 +15,7 @@ cont 0 100 100
   unicode-range: U+00-7F, U+2014;
 }
 
-html {
+:root {
   background-color: #213547;
   color: #f1f1f1f5;
   font-family: Ikarus, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -64,13 +64,8 @@ div {
 }
 
 p {
-  font-size: clamp(1.4rem, 0.75vw + 1.24rem, 2.2rem);
-  place-self: center;
-  width: 49ch;
-  margin: 0 auto;
-  white-space: nowrap;
-  overflow: visible;
-
+  margin: 0;
+  /* border: 1px solid coral; */
 }
 
 span:hover::after {
