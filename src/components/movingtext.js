@@ -6,7 +6,8 @@ template.innerHTML = `
   :host {
     display: block;
   }
-  div {
+  .root {
+    position: relative;
     border: 1px solid red;
     place-content: center;
     place-self: center;
@@ -32,7 +33,7 @@ template.innerHTML = `
     line-height: .5
   }
   </style>
-  <div>
+  <div class="root">
     <p><slot name="l00">
       <span></span> 
       <span></span> 
@@ -333,15 +334,16 @@ template.innerHTML = `
 class MovingText extends HTMLElement {
   constructor() {
     super();
-    const shadowRoot = this.attachShadow({ mode: 'open' });
+    const root = this.attachShadow({ mode: 'open' });
     let clone = template.content.cloneNode(true);
-    shadowRoot.append(clone);
+    root.append(clone);
   }
 
   //define the allowed attributes
   static get observedAttributes() {
-    return ['timeline', 'color', 'id', 'enable', 'frames', 'delay', 'direction', 'duration',
-      'easing', 'endDelay', 'iterationStart', 'iterations', 'psuedoElement', 'playbackRate', 'currentTime', 'startTime'];
+    return ['timeline', 'color', 'id', 'pausePlay', 'keyframes', 'delay', 'direction',
+      'duration', 'easing', 'endDelay', 'iterationStart', 'iterations', 'playbackRate',
+      'currentTime', 'startTime'];
   }
   //
   //create properties to sync with attributes
@@ -354,12 +356,83 @@ class MovingText extends HTMLElement {
   set timeline(value) {
     this.setAttribute('timeline', value)
   }
-
   get color() {
     return this.getAttribute('color');
   }
   set color(value) {
     this.setAttribute('color', value);
+  }
+  get pausePlay() {
+    return this.getAttribute('pausePlay');
+  }
+  set pausePlay(value) {
+    this.setAttribute('pausePlay', value);
+  }
+  get keyframes() {
+    return this.getAttribute('keyframes');
+  }
+  set keyframes(value) {
+    this.setAttribute('keyframes', value);
+  }
+  get delay() {
+    return parseFloat(this.getAttribute('delay')) || 0;
+  }
+  set delay(value) {
+    this.setAttribute('delay', value);
+  }
+  get direction() {
+    return this.getAttribute('direction');
+  }
+  set direction(value) {
+    this.setAttribute('direction', value);
+  }
+  get duration() {
+    return parseFloat(this.getAttribute('duration')) || 0;
+  }
+  set duration(value) {
+    this.setAttribute('duration', value);
+  }
+  get easing() {
+    return this.getAttribute('easing');
+  }
+  set easing(value) {
+    this.setAttribute('easing', value);
+  }
+  get endDelay() {
+    return parseFloat(this.getAttribute('endDelay')) || 0;
+  }
+  set endDelay(value) {
+    this.setAttribute('endDelay', value);
+  }
+  get iterationStart() {
+    return parseFloat(this.getAttribute('iterationStart')) || 0;
+  }
+  set iterationStart(value) {
+    this.setAttribute('iterationStart', value);
+  }
+  get iterations() {
+    return parseFloat(this.getAttribute('iterations'));
+  }
+  set iterations(value) {
+    this.setAttribute('iterations', value);
+  }
+  get playbackRate() {
+    return parseFloat(this.getAttribute('playbackRate'));
+  }
+  set playbackRate(value) {
+    this.setAttribute('playbackRate', value);
+  }
+  get currentTime() {
+    return parseFloat(this.getAttribute('currentTime'));
+  }
+  set currentTime(value) {
+    this.setAttribute('currentTime', value);
+  }
+  get startTime() {
+    return parseFloat(this.getAttribute('startTime'));
+  }
+  set startTime(value) {
+    this.setAttribute('startTime', value);
   }
   //
   //handle values and changes to the attributes
@@ -421,7 +494,7 @@ class MovingText extends HTMLElement {
       //})
     }
     if (attrName === 'color') {
-
+      this.style.backgroundColor = newVal;
     }
   }
 }

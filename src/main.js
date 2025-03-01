@@ -5,13 +5,18 @@
 document.addEventListener('DOMContentLoaded', () => {
   // HTML has loaded
   console.log('Main.js and the DOM are loaded');
-
-  // Modify data-enable attribute on half of animations
-  // words
-  //   .filter((_, index) => index % 2 === 0)
-  //   .map(w => w.setAttribute('data-enable', 'false'));
 });
 
+function hello(ev) {
+  console.log(ev);
+  console.log('hello from a local function');
+}
+
+function goodbye() {
+  console.log('goodbye from a local function');
+  let mt = document.querySelector('moving-text');
+  mt.remove();
+}
 // // create word animations and push to wordAnimations array
 // const wordAnimations = words
 //   .filter(w => w.getAttribute('data-enable') === 'true')
