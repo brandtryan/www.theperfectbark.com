@@ -22,7 +22,6 @@ template.innerHTML = `
     overflow: visible;
     margin: 0;
     padding: 0;
-    background-color: black;
     scroll-snap-stop: always;
   }
   ::slotted(p) {
