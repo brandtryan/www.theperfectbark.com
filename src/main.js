@@ -7,6 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('Main.js and the DOM are loaded');
 });
 
+const tim = document.querySelector('moving-text');
+console.log(document.timeline);
+
+
 // // create word animations and push to wordAnimations array
 // const wordAnimations = words
 //   .filter(w => w.getAttribute('data-enable') === 'true')

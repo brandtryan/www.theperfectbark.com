@@ -5,6 +5,7 @@ template.innerHTML = `
   <style>
   :host {
     display: block;
+    contain: content;
   }
   .root {
     position: relative;
@@ -431,13 +432,9 @@ class MovingText extends HTMLElement {
   //handle values and changes to the attributes
   attributeChangedCallback(attrName, oldVal, newVal) {
     if (attrName === 'timeline') {
-      newVal = new DocumentTimeline({
+      const newVal = new DocumentTimeline({
         originTime: document.timeline.currentTime,
       })
-      console.log(`Assigned timeline ${this.id}Timeline!
-        ${this.id}Timeline currentTime: ${newVal.currentTime}`,
-        newVal
-      );
     }
     if (attrName === 'keyframes') {
       // get timing options object
