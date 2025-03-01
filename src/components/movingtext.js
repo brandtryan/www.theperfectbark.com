@@ -341,7 +341,7 @@ class MovingText extends HTMLElement {
 
   //define the allowed attributes
   static get observedAttributes() {
-    return ['timeline', 'color', 'id', 'pausePlay', 'keyframes', 'delay', 'direction',
+    return ['timeline', 'id', 'pausePlay', 'keyframes', 'delay', 'direction',
       'duration', 'easing', 'endDelay', 'iterationStart', 'iterations', 'playbackRate',
       'currentTime', 'startTime'];
   }
@@ -355,12 +355,6 @@ class MovingText extends HTMLElement {
   }
   set timeline(value) {
     this.setAttribute('timeline', value)
-  }
-  get color() {
-    return this.getAttribute('color');
-  }
-  set color(value) {
-    this.setAttribute('color', value);
   }
   get pausePlay() {
     return this.getAttribute('pausePlay');
@@ -493,11 +487,7 @@ class MovingText extends HTMLElement {
       //  animation.currentTime=0; // "start page over option?"
       //})
     }
-    if (attrName === 'color') {
-      this.style.backgroundColor = newVal;
-    }
   }
 }
 
 customElements.define('moving-text', MovingText);
-

@@ -7,16 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('Main.js and the DOM are loaded');
 });
 
-function hello(ev) {
-  console.log(ev);
-  console.log('hello from a local function');
-}
-
-function goodbye() {
-  console.log('goodbye from a local function');
-  let mt = document.querySelector('moving-text');
-  mt.remove();
-}
 // // create word animations and push to wordAnimations array
 // const wordAnimations = words
 //   .filter(w => w.getAttribute('data-enable') === 'true')
