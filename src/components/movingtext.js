@@ -340,7 +340,8 @@ class MovingText extends HTMLElement {
 
   //define the allowed attributes
   static get observedAttributes() {
-    return ['id', 'timeline', 'color']
+    return ['timeline', 'color', 'id', 'enable', 'frames', 'delay', 'direction', 'duration',
+      'easing', 'endDelay', 'iterationStart', 'iterations', 'psuedoElement', 'playbackRate', 'currentTime', 'startTime'];
   }
   //
   //create properties to sync with attributes
@@ -368,10 +369,56 @@ class MovingText extends HTMLElement {
         originTime: document.timeline.currentTime,
       })
       console.log(`Assigned timeline ${this.id}Timeline!
-        ${this.id}Timeline currentTime = ${newVal.currentTime}`,
+        ${this.id}Timeline currentTime: ${newVal.currentTime}`,
         newVal
       );
-
+    }
+    if (attrName === 'keyframes') {
+      // get timing options object
+      // 
+      // create new KeyfromeEffect from joing keyframes object and options object, null target
+      // create/get new timeline
+      // create new animation(KeyFrameEffect, timeline)
+    }
+    if (attrName === 'pausePlay') {
+      // animation.newVal();
+    }
+    if (attrName === 'delay') {
+      // add to timing object
+    }
+    if (attrName === 'direction') {
+      // add to timing object
+    }
+    if (attrName === 'duration') {
+      // add to timing object
+    }
+    if (attrName === 'easing') {
+      // add to timing object
+    }
+    if (attrName === 'endDelay') {
+      // add to timing object
+    }
+    if (attrName === 'iterationStart') {
+      // add to timing object
+    }
+    if (attrName === 'iterations') {
+      // add to timing object
+    }
+    if (attrName === 'playbackRate') {
+      // check animation object complete
+      // animation.playbackRate = 1
+      // animation.play
+    }
+    if (attrName === 'startTime') {
+      // check animation object complete
+      // animation.startTime = 
+    }
+    if (attrName === 'currentTime') {
+      // reset animations and pause them
+      // animations.forEach((animation) => {
+      //  animation.pause();
+      //  animation.currentTime=0; // "start page over option?"
+      //})
     }
     if (attrName === 'color') {
 
