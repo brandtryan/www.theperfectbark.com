@@ -1,7 +1,7 @@
-export const sectionTimelines = [];
+export const timelines = [];
 
 for (let i = 0; i < 35; i++) {
-  sectionTimelines[i] = new DocumentTimeline({
+  timelines[i] = new DocumentTimeline({
     originTime: document.timeline.currentTime,
   });
 }

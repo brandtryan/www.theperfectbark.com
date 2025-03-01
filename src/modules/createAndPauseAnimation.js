@@ -1,8 +1,8 @@
 
 export function createAndPauseAnimation(element) {
-  if (!element || element.dataset.enable === 'false') return null;
+  if (!element) return null;
 
-  const frames = JSON.parse(element.dataset.frames);
+  const keyframes = JSON.parse(element.dataset.keyframes);
   const options = {
     delay: parseFloat(element.dataset.delay),
     endDelay: parseFloat(element.dataset.endDelay),
@@ -10,12 +10,10 @@ export function createAndPauseAnimation(element) {
     duration: parseFloat(element.dataset.duration),
     easing: element.dataset.easing,
     iterationStart: parseFloat(element.dataset.iterationStart),
-    composite: element.dataset.composite,
-    iterationComposite: element.dataset.iterationComposite,
     iterations: parseFloat(element.dataset.iterations),
   };
 
-  const effect = new KeyframeEffect(element, frames, options);
+  const effect = new KeyframeEffect(element, keyframes, options);
   const animation = new Animation(effect);
   animation.id = element.id + 'Animation';
 
@@ -44,7 +42,7 @@ export function createAndPauseAnimation(element) {
   // });
 
   // animation.play();
-  animation.pause();
+  // animation.pause();
 
   Animation.playbackRate = parseFloat(element.dataset.playbackRate);
   Animation.currentTime = parseFloat(element.dataset.currentTime);

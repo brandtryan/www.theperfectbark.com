@@ -432,9 +432,7 @@ class MovingText extends HTMLElement {
   //handle values and changes to the attributes
   attributeChangedCallback(attrName, oldVal, newVal) {
     if (attrName === 'timeline') {
-      const newVal = new DocumentTimeline({
-        originTime: document.timeline.currentTime,
-      })
+      //assign each page to its timeline
     }
     if (attrName === 'keyframes') {
       // get timing options object

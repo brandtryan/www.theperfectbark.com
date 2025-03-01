@@ -1,24 +1,24 @@
-// import {
-//   words, lines, sections, createAndPauseAnimation, iterateOverStartTime,
-// } from './modules/parentModule.js';
+import {
+  words, lines, movingTexts, timelines, createAndPauseAnimation, iterateOverStartTime,
+} from './modules/parentModule.js';
+
 
 document.addEventListener('DOMContentLoaded', () => {
-  // HTML has loaded
+  // HTML Ready
   console.log('Main.js and the DOM are loaded');
+  console.log(words.length);
+
 });
 
-const tim = document.querySelector('moving-text');
-console.log(document.timeline);
 
+// create word animations and push to wordAnimations array
+const wordAnimations = words.map(w => createAndPauseAnimation(w));
 
-// // create word animations and push to wordAnimations array
-// const wordAnimations = words
-//   .filter(w => w.getAttribute('data-enable') === 'true')
-//   .map(w => createAndPauseAnimation(w));
+console.log(wordAnimations);
 
-// // set startTimes (for sequence testing at the moment)
-// iterateOverStartTime(wordAnimations);
-// console.log("Animation startTimes set.");
+// set startTimes (for sequence testing at the moment)
+iterateOverStartTime(wordAnimations);
+console.log("Animation startTimes set.");
 
 
 // // Create animations for all lines
