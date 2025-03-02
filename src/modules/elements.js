@@ -1,11 +1,11 @@
 
-const pageElements = document.querySelectorAll('main div');
+const pageElements = document.querySelectorAll('moving-text');
 const lineElements = document.querySelectorAll('p');
 const wordElements = document.querySelectorAll('span');
 
-export const pagesArray = Array.from(pageElements);
-export const linesArray = Array.from(lineElements);
-export const wordsArray = Array.from(wordElements);
+const pagesArray = Array.from(pageElements);
+const linesArray = Array.from(lineElements);
+const wordsArray = Array.from(wordElements);
 
 export const [pages] = [pagesArray];
 export const [lines] = [linesArray];

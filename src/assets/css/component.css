@@ -1,0 +1,73 @@
+:host {
+  display: block;
+  border: 1px solid cornflowerblue;
+}
+
+div {
+  width: 49ch;
+  height: 150vh;
+  border: 1px solid red;
+  place-self: center;
+  font-size: clamp(1.4rem, 0.75vw + 1.24rem, 2.2rem);
+  margin: 0 auto;
+  white-space: nowrap;
+  overflow: visible;
+  margin: 0;
+  padding: 0;
+  scroll-snap-stop: always;
+  content-visibility: auto;
+  transition-property: opacity, content-visibility;
+  transition-duration: 0.25s;
+  transition-behavior: allow-discrete;
+  transition-timing-function: div-easeInBounce;
+
+  @keyframes div-easeInBounce {
+    0% {
+      transform: translateX(0%);
+    }
+
+    4% {
+      transform: translateX(-1.54%);
+    }
+
+    8% {
+      transform: translateX(-0.66%);
+    }
+
+    18% {
+      transform: translateX(-6.25%);
+    }
+
+    26% {
+      transform: translateX(-1.63%);
+    }
+
+    46% {
+      transform: translateX(-24.98%);
+    }
+
+    64% {
+      transform: translateX(-1.99%);
+    }
+
+    76% {
+      transform: translateX(-56.44%);
+    }
+
+    88% {
+      transform: translateX(-89.11%);
+    }
+
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  p {
+    margin: 0;
+    padding: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    line-height: 1.5
+  }
+}
