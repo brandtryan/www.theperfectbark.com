@@ -1,6 +1,7 @@
 //This file will be the web component
 //It only needs to run, not be imported by main.js
 import { wordAnimations } from "../modules/wordAnimations";
+import '../assets/css/component.css'
 
 class AnimaScript extends HTMLElement {
   constructor() {
