@@ -1,5 +1,5 @@
 import { words, createAndPauseAnimation } from "./parentModule";
 
-// create word animations and push to wordAnimations array
+// create word animations 
 export const wordAnimations = words
   .map(w => createAndPauseAnimation(w));
