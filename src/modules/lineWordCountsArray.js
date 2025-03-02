@@ -1,3 +1,3 @@
-import { lines } from "./elements.js"
+import { lines } from "./elements";
 
 export const lineWordCountsArray = lines.map((line) => line.childElementCount);
