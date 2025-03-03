@@ -1,6 +1,6 @@
 //This file will be the web component
 //It only needs to run, not be imported by main.js
-import { wordAnimations } from "../modules/wordAnimations";
+import { wordAnimations, createAndPauseAnimation } from "../modules/parentModule";
 import '../assets/css/component.css'
 
 class AnimaScript extends HTMLElement {
@@ -10,6 +10,10 @@ class AnimaScript extends HTMLElement {
     let templateContent = template.content;
     const root = this.attachShadow({ mode: 'open' });
     root.appendChild(templateContent.cloneNode(true));
+
+    createAndPauseAnimation(wordAnimations);
+    console.log(document.getAnimations());
+
   }
 
   //define the allowed attributes

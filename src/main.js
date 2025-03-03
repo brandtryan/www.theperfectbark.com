@@ -1,3 +1,5 @@
+import { wordAnimations } from "./modules/wordAnimations";
+
 document.addEventListener('DOMContentLoaded', () => {
   // HTML has loaded
   console.log('Main.js and the DOM are loaded');
@@ -10,5 +12,5 @@ window.executeFunction = (functionName, element) => {
     console.error(`Function ${functionName} not found.`);
   }
 };
-
+wordAnimations.forEach(a => a.play());
 console.log(document.getAnimations());
