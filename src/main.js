@@ -12,5 +12,3 @@ window.executeFunction = (functionName, element) => {
     console.error(`Function ${functionName} not found.`);
   }
 };
-wordAnimations.forEach(a => a.play());
-console.log(document.getAnimations());
