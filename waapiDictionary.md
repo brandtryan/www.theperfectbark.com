@@ -1,4 +1,3 @@
-```markdown
 # Web Animations API: Objects, Properties, and Methods
 
 ## 1. `Animation` Interface
