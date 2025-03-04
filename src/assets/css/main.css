@@ -42,6 +42,21 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.page {
+  border: 1px solid red;
+  font-size: clamp(1.4rem, 0.75vw + 1.24rem, 2.2rem);
+  white-space: nowrap;
+  overflow: visible;
+  place-content: center;
+  content-visibility: auto;
+  height: 100cqb;
+  width: 100cqi;
+  transition-property: opacity, content-visibility;
+  transition-duration: 0.25s;
+  transition-behavior: allow-discrete;
+  transition-timing-function: div-easeInBounce;
+}
+
 article {
   container-type: size;
   width: 53ch;

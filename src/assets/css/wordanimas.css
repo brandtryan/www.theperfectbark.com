@@ -1,4 +1,5 @@
 :host {
+  display: block;
   border: 1px solid cornflowerblue;
   place-self: center;
   margin-block-start: 0;
@@ -26,8 +27,12 @@ div {
   transition-timing-function: div-easeInBounce;
 }
 
-span[slot]:hover::after {
-  content: attr(slot);
+span {
+  display: inline;
+}
+
+span:hover::after {
+  content: attr(id);
   display: block;
   position: absolute;
   background-color: rgba(0, 0, 0, 0.7);
@@ -40,7 +45,7 @@ span[slot]:hover::after {
   z-index: 10;
 }
 
-@keyframes div-easeInBounce {
+/* @keyframes div-easeInBounce {
   0% {
     transform: translateX(0%);
   }
@@ -80,11 +85,11 @@ span[slot]:hover::after {
   100% {
     transform: translateX(-100%);
   }
-}
+} */
 
-p {
+/* p {
   margin: 0;
   padding: 0;
   margin-block-start: 0;
   margin-block-end: 0;
-}
+} */
