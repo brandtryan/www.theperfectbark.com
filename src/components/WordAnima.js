@@ -27,12 +27,13 @@ class WordAnima extends HTMLElement {
       'enable',
       'keyframes',
       'timing',
+      'text',
       'play',
       'pause',
+      'seek',
       'reverse',
       'currenttime',
-      'playbackrate',
-      'text'
+      'playbackrate'
     ];
   }
   //
