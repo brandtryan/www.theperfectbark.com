@@ -16,6 +16,7 @@ class WordAnima extends HTMLElement {
     return [
       'keyframes',          // (set) array (of objects)
       'timing',             // (set) object
+      'text',               // (get) string
       'anima',              // (set) object
       'getcomputedtiming',  // (get) object
       'cancel',             // (set) boolean
@@ -43,7 +44,7 @@ class WordAnima extends HTMLElement {
   //
   //create properties to sync with OBSERVED attributes (REFLECT)
   set keyframes(value) {
-    let parsedValue = JSON.parse(value)
+    let parsedValue = JSON.parse(value);
     this.setAttribute('keyframes', parsedValue);
   };
 
@@ -52,22 +53,29 @@ class WordAnima extends HTMLElement {
     this.setAttribute('timing', parsedValue);
   };
 
-  get anima() { return this.getAttribute('anima') };
+  get text() { return this.getAttribute('text') };
 
+  // set anima(value) { this.setAttribute('play', value) };
+
+  get play() { return this.getAttribute('play') };
   set play(value) { this.setAttribute('play', value) };
 
-  set pause(value) {
-    this.setAttribute('pause', value)
-  };
+  get pause() { return this.getAttribute('pause') };
+  set pause(value) { this.setAttribute('pause', value) };
 
+  get seek() { return this.getAttribute('seek') };
   set seek(value) { this.setAttribute('seek', value) };
 
+  get reverse() { return this.getAttribute('reverse') };
   set reverse(value) { this.setAttribute('reverse', value) };
 
+  get cancel() { return this.getAttribute('cancel') };
   set cancel(value) { this.setAttribute('cancel', value) };
 
+  get finish() { return this.getAttribute('finish') };
   set finish(value) { this.setAttribute('finish', value) };
 
+  get remove() { return this.getAttribute('remove') };
   set remove(value) { this.setAttribute('remove', value) };
 
   get getcomputedtiming() { return this.getAttribute('getcomputedtiming') };
@@ -82,9 +90,7 @@ class WordAnima extends HTMLElement {
   set playbackrate(value) { this.setAttribute('playbackrate', value) };
   set updateplaybackrate(value) { this.setAttribute('updateplaybackrate', value) };
 
-  get ready() {
-    return this.getAttribute('ready');
-  };
+  get ready() { return this.getAttribute('ready') };
 
   get finished() { return this.getAttribute('finished') };
 
@@ -99,10 +105,9 @@ class WordAnima extends HTMLElement {
   set onremove(value) { this.setAttribute('onremove', value) };
 
   get animationid() { return this.getAttribute('animationid') };
-  set animationid(value) {
-    value = `${this.id}Anima`;
-    this.setAttribute('animationid', value)
-  };
+  // set animationid(value) {
+  //   value = `${this.id}Anima`;
+  //   this.setAttribute('animationid', value)
 
   //
   //handle values and changes to the attributes
@@ -111,6 +116,9 @@ class WordAnima extends HTMLElement {
 
     }
     if (attrName === 'timing') {
+
+    }
+    if (attrName === 'anima') {
 
     }
     if (attrName === 'play') {
@@ -138,17 +146,22 @@ class WordAnima extends HTMLElement {
 
     // Internal State references and values required to manage animation:
     //Text Node to be animated
-    const word = new Text(this.getAttribute('text'));
+    const string = this.text;
+    const word = new Text(string);
+
     this.shadowRoot.append(word);
 
     const keyframes = this.keyframes;
+    console.log(keyframes);
+
     const timing = this.timing;
+    console.log(timing);
+
 
     const effect = new KeyframeEffect(this, keyframes, timing);
     const anima = new Animation(effect);
     anima.ready.then(console.log(`Animation is ready!`));
     anima.pause();
-
   }
 
   // //Handle play/pause
@@ -186,6 +199,6 @@ class WordAnima extends HTMLElement {
   //     }
   //   });
   // }
-}
+};
 
 customElements.define('word-anima', WordAnima);
