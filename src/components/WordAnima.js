@@ -15,10 +15,8 @@ class WordAnima extends HTMLElement {
   //define the OBSERVED attributes
   static get observedAttributes() {
     return [
-      'enable',
       'keyframes',
       'timing',
-      'text',
       'play',
       'pause',
       'seek',
@@ -29,18 +27,6 @@ class WordAnima extends HTMLElement {
   }
   //
   //create properties to sync with OBSERVED attributes (REFLECT)
-  get id() {
-    return this.getAttribute('id');
-  }
-  get text() {
-    return this.getAttribute('text');
-  }
-  get enable() {
-    return this.getAttribute('enable');
-  }
-  set enable(value) {
-    this.setAttribute('enable', value)
-  }
   get keyframes() {
     return this.getAttribute('keyframes');
   }
@@ -93,18 +79,16 @@ class WordAnima extends HTMLElement {
   //
   //handle values and changes to the attributes
   attributeChangedCallback(attrName, oldVal, newVal) {
-    if (attrName === 'enable') {
-
-    }
     if (attrName === 'keyframes') {
       // get timing options object
-      // 
+      // const keyframes = JSON.parse(newVal);
       // create new KeyfromeEffect from joing keyframes object and options object, null target
-      // create/get new timeline
       // create new animation(KeyFrameEffect, timeline)
     }
     if (attrName === 'timing') {
       // pass to new animation
+      // const timing = JSON.parse(newVal);
+
     }
     if (attrName === 'play') {
 
@@ -132,41 +116,60 @@ class WordAnima extends HTMLElement {
     }
   }
 
-  //Handle play/pause
-  _handleControl(control) {
-    wordAnimations
-      .map(span => span.getAnimations()[0])
-      .filter(a => a);
-    if (control === 'play') {
-      wordAnimations.forEach(animation => animation.play());
-    } else if (control === 'pause') {
-      wordAnimations.forEach(animation => animation.pause());
-    }
+  connectedCallback() {
+    const docTime = this.ownerDocument.timeline.currentTime;
+    // Internal State references and values required to manage animation:
+    //Text Node to be animated
+    const word = new Text(this.getAttribute('text'));
+    this.shadowRoot.append(word);
+
+    const keyframes = JSON.parse(this.keyframes);
+    const timing = JSON.parse(this.timing);
+
+    const effect = new KeyframeEffect(this, keyframes, timing);
+    const anima = new Animation(effect);
+    // console.log(anima.ready.);
+    anima.ready.then(console.log(`Animation is ready!`));
+
+
+
   }
 
-  //Handle seek time
-  _handleSeek(time) {
-    const animations = Array.from(this.shadowRoot.querySelectorAll('span'))
-      .map(span => span.getAnimations()[0])
-      .filter(a => a);
-    animations.forEach(animation => {
-      if (animation) {
-        animation.currentTime = time;
-      }
-    });
-  }
+  // //Handle play/pause
+  // _handleControl(control) {
+  //   wordAnimations
+  //     .map(span => span.getAnimations()[0])
+  //     .filter(a => a);
+  //   if (control === 'play') {
+  //     wordAnimations.forEach(animation => animation.play());
+  //   } else if (control === 'pause') {
+  //     wordAnimations.forEach(animation => animation.pause());
+  //   }
+  // }
 
-  //Handle seek time
-  _handleSeek(time) {
-    const animations = Array.from(this.shadowRoot.querySelectorAll('span'))
-      .map(span => span.getAnimations()[0])
-      .filter(a => a);
-    animations.forEach(animation => {
-      if (animation) {
-        animation.currentTime = time;
-      }
-    });
-  }
+  // //Handle seek time
+  // _handleSeek(time) {
+  //   const animations = Array.from(this.shadowRoot.querySelectorAll('span'))
+  //     .map(span => span.getAnimations()[0])
+  //     .filter(a => a);
+  //   animations.forEach(animation => {
+  //     if (animation) {
+  //       animation.currentTime = time;
+  //     }
+  //   });
+  // }
+
+  // //Handle seek time
+  // _handleSeek(time) {
+  //   const animations = Array.from(this.shadowRoot.querySelectorAll('span'))
+  //     .map(span => span.getAnimations()[0])
+  //     .filter(a => a);
+  //   animations.forEach(animation => {
+  //     if (animation) {
+  //       animation.currentTime = time;
+  //     }
+  //   });
+  // }
 }
 
 customElements.define('word-anima', WordAnima);
