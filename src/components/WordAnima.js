@@ -1,29 +1,20 @@
 
 //This file will be the web component
 //It only needs to run, not be imported by main.js
-// import { wordAnimations, createAndPauseAnimation } from "../modules/parentModule";
-// import '../assets/css/component.css'
-
-const template = document.createElement('template');
-template.innerHTML = `
-  <style>
-    @import url('../assets/css/component.css');
-  </style>
-`;
-
-
 class WordAnima extends HTMLElement {
   constructor() {
     super();
     const shadowRoot = this.attachShadow({ mode: 'open' });
-    let clone = template.content.cloneNode(true);
-    shadowRoot.append(clone);
+    shadowRoot.innerHTML = `
+      <style>
+        @import url('../assets/css/component.css');
+      </style>
+    `;
   }
 
-  //define the allowed attributes
+  //define the OBSERVED attributes
   static get observedAttributes() {
     return [
-      'id',
       'enable',
       'keyframes',
       'timing',
@@ -37,7 +28,7 @@ class WordAnima extends HTMLElement {
     ];
   }
   //
-  //create properties to sync with attributes
+  //create properties to sync with OBSERVED attributes (REFLECT)
   get id() {
     return this.getAttribute('id');
   }
@@ -97,12 +88,6 @@ class WordAnima extends HTMLElement {
   }
   set playbackrate(value) {
     this.setAttribute('playbackrate', value)
-  }
-  get play() {
-    return this.getAttribute('play');
-  }
-  set play(value) {
-    this.setAttribute('play', value)
   }
 
   //
