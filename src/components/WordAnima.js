@@ -1,17 +1,14 @@
 
 //This file will be the web component
 //It only needs to run, not be imported by main.js
+
 class WordAnima extends HTMLElement {
   constructor() {
     super();
     const shadowRoot = this.attachShadow({ mode: 'open' });
-    shadowRoot.innerHTML = `
-      <style>
-        @import url('../assets/css/component.css');
-      </style>
-    `;
   }
 
+  //
   //define the OBSERVED attributes
   static get observedAttributes() {
     return [
@@ -25,6 +22,7 @@ class WordAnima extends HTMLElement {
       'playbackrate'
     ];
   }
+
   //
   //create properties to sync with OBSERVED attributes (REFLECT)
   get keyframes() {
@@ -80,20 +78,21 @@ class WordAnima extends HTMLElement {
   //handle values and changes to the attributes
   attributeChangedCallback(attrName, oldVal, newVal) {
     if (attrName === 'keyframes') {
-      // get timing options object
-      // const keyframes = JSON.parse(newVal);
-      // create new KeyfromeEffect from joing keyframes object and options object, null target
-      // create new animation(KeyFrameEffect, timeline)
+
     }
     if (attrName === 'timing') {
-      // pass to new animation
-      // const timing = JSON.parse(newVal);
 
     }
     if (attrName === 'play') {
+      // newVal === 'true'
+      //   ? // anima.play(); 
+      //   : // anima.pause();
 
     }
     if (attrName === 'pause') {
+      // newVal === 'true'
+      //   ? // anima.pause();
+      //   : // anima.play();
 
     }
     if (attrName === 'seek') {
@@ -103,21 +102,16 @@ class WordAnima extends HTMLElement {
 
     }
     if (attrName === 'currenttime') {
-      // reset animations and pause them
-      // animations.forEach((animation) => {
-      //  animation.pause();
-      //  animation.currenttime=0; // "start page over option?"
-      //})
+
     }
     if (attrName === 'playbackrate') {
-      // check animation object complete
-      // animation.playbackrate = 1
-      // animation.play
+
     }
   }
 
   connectedCallback() {
     const docTime = this.ownerDocument.timeline.currentTime;
+
     // Internal State references and values required to manage animation:
     //Text Node to be animated
     const word = new Text(this.getAttribute('text'));
@@ -128,10 +122,8 @@ class WordAnima extends HTMLElement {
 
     const effect = new KeyframeEffect(this, keyframes, timing);
     const anima = new Animation(effect);
-    // console.log(anima.ready.);
     anima.ready.then(console.log(`Animation is ready!`));
-
-
+    anima.pause();
 
   }
 

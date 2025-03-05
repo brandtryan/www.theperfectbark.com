@@ -12,3 +12,6 @@ window.executeFunction = (functionName, element) => {
     console.error(`Function ${functionName} not found.`);
   }
 };
+
+const animations = document.getAnimations();
+console.log(animations);
