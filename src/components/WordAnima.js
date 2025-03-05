@@ -6,73 +6,103 @@ class WordAnima extends HTMLElement {
   constructor() {
     super();
     const shadowRoot = this.attachShadow({ mode: 'open' });
+
+    // Event listeners?
   }
 
   //
   //define the OBSERVED attributes
   static get observedAttributes() {
     return [
-      'keyframes',
-      'timing',
-      'play',
-      'pause',
-      'seek',
-      'reverse',
-      'currenttime',
-      'playbackrate'
+      'keyframes',          // (set) array (of objects)
+      'timing',             // (set) object
+      'anima',              // (set) object
+      'getcomputedtiming',  // (get) object
+      'cancel',             // (set) boolean
+      'finish',             // (set) boolean
+      'remove',             // (set) boolean
+      'play',               // (set) boolean
+      'pause',              // (set) boolean
+      'seek',               // (set) number
+      'reverse',            // (set) boolean
+      'currenttime',        // (get/set) number
+      'playbackrate',       // (get/set) number
+      'updateplaybackrate', // (set) string
+      'ready',              // (get) object
+      'finished',           // (get) object
+      'pending',            // (get) object
+      'playstate',          // (get) string
+      'starttime',          // (get/set) number
+      'oncancel',           // (get/set) string
+      'onfinish',           // (get/set) string
+      'onremove',           // (get/set) string
+      'animationid',        // (get/set) string
     ];
   }
 
   //
   //create properties to sync with OBSERVED attributes (REFLECT)
-  get keyframes() {
-    return this.getAttribute('keyframes');
-  }
   set keyframes(value) {
-    this.setAttribute('keyframes', value);
-  }
-  get timing() {
-    return this.getAttribute('timing');
-  }
+    let parsedValue = JSON.parse(value)
+    this.setAttribute('keyframes', parsedValue);
+  };
+
   set timing(value) {
-    this.setAttribute('timing', value);
-  }
-  get play() {
-    return this.getAttribute('play');
-  }
-  set play(value) {
-    this.setAttribute('play', value)
-  }
-  get pause() {
-    return this.getAttribute('pause');
-  }
+    let parsedValue = JSON.parse(value);
+    this.setAttribute('timing', parsedValue);
+  };
+
+  get anima() { return this.getAttribute('anima') };
+
+  set play(value) { this.setAttribute('play', value) };
+
   set pause(value) {
     this.setAttribute('pause', value)
-  }
-  get seek() {
-    return this.getAttribute('seek');
-  }
-  set seek(value) {
-    this.setAttribute('seek', value)
-  }
-  get reverse() {
-    return this.getAttribute('reverse');
-  }
-  set reverse(value) {
-    this.setAttribute('reverse', value)
-  }
-  get currenttime() {
-    return this.getAttribute('currenttime');
-  }
-  set currenttime(value) {
-    this.setAttribute('currenttime', value)
-  }
-  get playbackrate() {
-    return this.getAttribute('playbackrate');
-  }
-  set playbackrate(value) {
-    this.setAttribute('playbackrate', value)
-  }
+  };
+
+  set seek(value) { this.setAttribute('seek', value) };
+
+  set reverse(value) { this.setAttribute('reverse', value) };
+
+  set cancel(value) { this.setAttribute('cancel', value) };
+
+  set finish(value) { this.setAttribute('finish', value) };
+
+  set remove(value) { this.setAttribute('remove', value) };
+
+  get getcomputedtiming() { return this.getAttribute('getcomputedtiming') };
+
+  get starttime() { return this.getAttribute('starttime') };
+  set starttime(value) { this.setAttribute('starttime', value) };
+
+  get currenttime() { return this.getAttribute('currenttime') };
+  set currenttime(value) { this.setAttribute('currenttime', value) };
+
+  get playbackrate() { return this.getAttribute('playbackrate') };
+  set playbackrate(value) { this.setAttribute('playbackrate', value) };
+  set updateplaybackrate(value) { this.setAttribute('updateplaybackrate', value) };
+
+  get ready() {
+    return this.getAttribute('ready');
+  };
+
+  get finished() { return this.getAttribute('finished') };
+
+  get pending() { return this.getAttribute('pending') };
+
+  get playstate() { return this.getAttribute('playstate') };
+
+  set oncancel(value) { this.setAttribute('oncancel', value) };
+
+  set onfinish(value) { this.setAttribute('onfinish', value) };
+
+  set onremove(value) { this.setAttribute('onremove', value) };
+
+  get animationid() { return this.getAttribute('animationid') };
+  set animationid(value) {
+    value = `${this.id}Anima`;
+    this.setAttribute('animationid', value)
+  };
 
   //
   //handle values and changes to the attributes
@@ -84,15 +114,9 @@ class WordAnima extends HTMLElement {
 
     }
     if (attrName === 'play') {
-      // newVal === 'true'
-      //   ? // anima.play(); 
-      //   : // anima.pause();
 
     }
     if (attrName === 'pause') {
-      // newVal === 'true'
-      //   ? // anima.pause();
-      //   : // anima.play();
 
     }
     if (attrName === 'seek') {
@@ -117,8 +141,8 @@ class WordAnima extends HTMLElement {
     const word = new Text(this.getAttribute('text'));
     this.shadowRoot.append(word);
 
-    const keyframes = JSON.parse(this.keyframes);
-    const timing = JSON.parse(this.timing);
+    const keyframes = this.keyframes;
+    const timing = this.timing;
 
     const effect = new KeyframeEffect(this, keyframes, timing);
     const anima = new Animation(effect);
