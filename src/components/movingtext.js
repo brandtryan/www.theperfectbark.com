@@ -1,5 +1,8 @@
 //This file will be the web component
 //It only needs to run, not be imported by main.js
+import { words } from "../modules/elements";
+import { createAndPauseAnimation } from "../modules/createAndPauseAnimation";
+
 const template = document.createElement('template');
 template.innerHTML = `
   <style>
@@ -331,13 +334,15 @@ class MovingText extends HTMLElement {
     const root = this.attachShadow({ mode: 'open' });
     let clone = template.content.cloneNode(true);
     root.append(clone);
+
   }
+
 
   //define the allowed attributes
   static get observedAttributes() {
-    return ['timeline', 'id', 'pausePlay', 'keyframes', 'delay', 'direction',
-      'duration', 'easing', 'endDelay', 'iterationStart', 'iterations', 'playbackRate',
-      'currentTime', 'startTime'];
+    return ['timeline', 'id', 'pauseplay', 'keyframes', 'delay', 'direction',
+      'duration', 'easing', 'enddelay', 'iterationstart', 'iterations', 'playbackrate',
+      'currenttime', 'starttime'];
   }
   //
   //create properties to sync with attributes
@@ -350,11 +355,11 @@ class MovingText extends HTMLElement {
   set timeline(value) {
     this.setAttribute('timeline', value)
   }
-  get pausePlay() {
-    return this.getAttribute('pausePlay');
+  get pauseplay() {
+    return this.getAttribute('pauseplay');
   }
-  set pausePlay(value) {
-    this.setAttribute('pausePlay', value);
+  set pauseplay(value) {
+    this.setAttribute('pauseplay', value);
   }
   get keyframes() {
     return this.getAttribute('keyframes');
@@ -386,17 +391,17 @@ class MovingText extends HTMLElement {
   set easing(value) {
     this.setAttribute('easing', value);
   }
-  get endDelay() {
-    return parseFloat(this.getAttribute('endDelay')) || 0;
+  get enddelay() {
+    return parseFloat(this.getAttribute('enddelay')) || 0;
   }
-  set endDelay(value) {
-    this.setAttribute('endDelay', value);
+  set enddelay(value) {
+    this.setAttribute('enddelay', value);
   }
-  get iterationStart() {
-    return parseFloat(this.getAttribute('iterationStart')) || 0;
+  get iterationstart() {
+    return parseFloat(this.getAttribute('iterationstart')) || 0;
   }
-  set iterationStart(value) {
-    this.setAttribute('iterationStart', value);
+  set iterationstart(value) {
+    this.setAttribute('iterationstart', value);
   }
   get iterations() {
     return parseFloat(this.getAttribute('iterations'));
@@ -404,33 +409,46 @@ class MovingText extends HTMLElement {
   set iterations(value) {
     this.setAttribute('iterations', value);
   }
-  get playbackRate() {
-    return parseFloat(this.getAttribute('playbackRate'));
+  get playbackrate() {
+    return parseFloat(this.getAttribute('playbackrate'));
   }
-  set playbackRate(value) {
-    this.setAttribute('playbackRate', value);
+  set playbackrate(value) {
+    this.setAttribute('playbackrate', value);
   }
-  get currentTime() {
-    return parseFloat(this.getAttribute('currentTime'));
+  get currenttime() {
+    return parseFloat(this.getAttribute('currenttime'));
   }
-  set currentTime(value) {
-    this.setAttribute('currentTime', value);
+  set currenttime(value) {
+    this.setAttribute('currenttime', value);
   }
-  get startTime() {
-    return parseFloat(this.getAttribute('startTime'));
+  get starttime() {
+    return parseFloat(this.getAttribute('starttime'));
   }
-  set startTime(value) {
-    this.setAttribute('startTime', value);
+  set starttime(value) {
+    this.setAttribute('starttime', value);
+  }
+
+  connectedCallback() {
+    const wordAnimations = [];
+
+    for (let word of words) {
+      wordAnimations.push(createAndPauseAnimation(word));
+    }
+
+  }
+
+  disconnectedCallback() {
+
   }
   //
   //handle values and changes to the attributes
   attributeChangedCallback(attrName, oldVal, newVal) {
     if (attrName === 'timeline') {
       newVal = new DocumentTimeline({
-        originTime: document.timeline.currentTime,
+        originTime: document.timeline.currenttime,
       })
       console.log(`Assigned timeline ${this.id}Timeline!
-        ${this.id}Timeline currentTime: ${newVal.currentTime}`,
+        ${this.id}Timeline currenttime: ${newVal.currenttime}`,
         newVal
       );
     }
@@ -441,7 +459,7 @@ class MovingText extends HTMLElement {
       // create/get new timeline
       // create new animation(KeyFrameEffect, timeline)
     }
-    if (attrName === 'pausePlay') {
+    if (attrName === 'pauseplay') {
       // animation.newVal();
     }
     if (attrName === 'delay') {
@@ -456,29 +474,29 @@ class MovingText extends HTMLElement {
     if (attrName === 'easing') {
       // add to timing object
     }
-    if (attrName === 'endDelay') {
+    if (attrName === 'enddelay') {
       // add to timing object
     }
-    if (attrName === 'iterationStart') {
+    if (attrName === 'iterationstart') {
       // add to timing object
     }
     if (attrName === 'iterations') {
       // add to timing object
     }
-    if (attrName === 'playbackRate') {
+    if (attrName === 'playbackrate') {
       // check animation object complete
-      // animation.playbackRate = 1
+      // animation.playbackrate = 1
       // animation.play
     }
-    if (attrName === 'startTime') {
+    if (attrName === 'starttime') {
       // check animation object complete
-      // animation.startTime = 
+      // animation.starttime = 
     }
-    if (attrName === 'currentTime') {
+    if (attrName === 'currenttime') {
       // reset animations and pause them
       // animations.forEach((animation) => {
       //  animation.pause();
-      //  animation.currentTime=0; // "start page over option?"
+      //  animation.currenttime=0; // "start page over option?"
       //})
     }
   }

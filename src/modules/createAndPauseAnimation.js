@@ -1,21 +1,21 @@
 
 export function createAndPauseAnimation(element) {
-  if (!element || element.dataset.enable === 'false') return null;
+  if (!element || element.enable === 'false') return null;
 
-  const frames = JSON.parse(element.dataset.frames);
+  const keyframes = JSON.parse(element.keyframes);
   const options = {
-    delay: parseFloat(element.dataset.delay),
-    endDelay: parseFloat(element.dataset.endDelay),
-    direction: element.dataset.direction,
-    duration: parseFloat(element.dataset.duration),
-    easing: element.dataset.easing,
-    iterationStart: parseFloat(element.dataset.iterationStart),
-    composite: element.dataset.composite,
-    iterationComposite: element.dataset.iterationComposite,
-    iterations: parseFloat(element.dataset.iterations),
+    delay: parseFloat(element.delay),
+    enddelay: parseFloat(element.enddelay),
+    direction: element.direction,
+    duration: parseFloat(element.duration),
+    easing: element.easing,
+    iterationstart: parseFloat(element.iterationstart),
+    composite: element.composite,
+    iterationcomposite: element.iterationcomposite,
+    iterations: parseFloat(element.iterations),
   };
 
-  const effect = new KeyframeEffect(element, frames, options);
+  const effect = new KeyframeEffect(element, keyframes, options);
   const animation = new Animation(effect);
   animation.id = element.id + 'Animation';
 
@@ -25,7 +25,7 @@ export function createAndPauseAnimation(element) {
   // }
 
   // sections.forEach(section => {
-  //   const timelineName = section.dataset.timeline;
+  //   const timelineName = section.timeline;
   //   const timeline = sectionTimelines.find(tl => tl.name === timelineName);
 
   //   if (timeline) {
@@ -45,10 +45,6 @@ export function createAndPauseAnimation(element) {
 
   // animation.play();
   animation.pause();
-
-  Animation.playbackRate = parseFloat(element.dataset.playbackRate);
-  Animation.currentTime = parseFloat(element.dataset.currentTime);
-  Animation.startTime = parseFloat(element.dataset.startTime);
 
   return animation;
 }
