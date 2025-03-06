@@ -9,6 +9,7 @@ cont 0 100 100
 @font-face {
   font-family: Ikarus;
   src: url("../Ikarus.woff2") format("woff2-variations");
+  font-style: normal;
   font-weight: 47 900;
   font-stretch: 60% 140%;
   font-display: swap;
@@ -17,7 +18,7 @@ cont 0 100 100
 
 html {
   background-color: #213547;
-  color: #f1f1f1f5;
+  color: ivory;
   font-family: Ikarus, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-size: 62.5%;
   font-feature-settings:
@@ -35,31 +36,6 @@ html {
   font-weight: 325;
   font-stretch: 100%;
   height: 100%;
-  line-height: 1.5;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-.page {
-  border: 1px solid red;
-  font-size: clamp(1.4rem, 0.75vw + 1.24rem, 2.2rem);
-  white-space: nowrap;
-  overflow: visible;
-  place-content: center;
-  content-visibility: auto;
-  height: 100cqb;
-  width: 100cqi;
-  transition-property: opacity, content-visibility;
-  transition-duration: 0.25s;
-  transition-behavior: allow-discrete;
-  transition-timing-function: div-easeInBounce;
-}
-
-article {
-  container-type: size;
-  width: 53ch;
-  height: 100vh;
-  place-self: center;
 }
