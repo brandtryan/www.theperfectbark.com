@@ -1,5 +1,5 @@
-import { lines } from "./parentModule";
-import { lineWordCountsArray } from "./parentModule";
+import { lines } from "./elements";
+import { lineWordCountsArray } from "./lineWordCountsArray";
 
 export const lineReadingTimesArray = lines.map((index) => {
   const time = lineWordCountsArray[index] / 225 * 60;

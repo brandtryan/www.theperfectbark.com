@@ -1,40 +1,30 @@
 //This file will be the web component
 //It only needs to run, not be imported by main.js
-import { wordAnimations, iterateOverStartTime } from "../modules/parentModule";
-console.log(wordAnimations);
-
-
 const template = document.createElement('template');
 template.innerHTML = `
   <style>
   :host {
     display: block;
-    contain: content;
+    padding: 0;
   }
   .root {
-    position: relative;
     border: 1px solid red;
     place-content: center;
     place-self: center;
     width: 49ch;
-    height: 150vh;
+    height: 100vh;
     content-visibility: auto;
-    contain-intrinsic-width: 48ch;
+    contain-intrinsic-width: 49ch;
     contain-intrinsic-height: 100vh;
     font-size: clamp(1.4rem, 0.75vw + 1.24rem, 2.2rem);
-    margin: 0 auto;
     white-space: nowrap;
     overflow: visible;
-    margin: 0;
-    padding: 0;
     scroll-snap-stop: always;
   }
   ::slotted(p) {
-    margin: 0; 
-    padding: 0;
     margin-block-start: 0;
     margin-block-end: 0;
-    line-height: .5
+    line-height: .3
   }
   </style>
   <div class="root">
@@ -345,26 +335,26 @@ class MovingText extends HTMLElement {
 
   //define the allowed attributes
   static get observedAttributes() {
-    return ['timeline', 'id', 'pauseplay', 'keyframes', 'delay', 'direction',
-      'duration', 'easing', 'enddelay', 'iterationstart', 'iterations', 'playbackrate',
-      'currenttime', 'starttime'];
+    return ['timeline', 'id', 'pausePlay', 'keyframes', 'delay', 'direction',
+      'duration', 'easing', 'endDelay', 'iterationStart', 'iterations', 'playbackRate',
+      'currentTime', 'startTime'];
   }
   //
   //create properties to sync with attributes
   get id() {
     return this.getAttribute('id');
   }
-  get enable() {
-    return this.getAttribute('enable');
+  get timeline() {
+    return this.getAttribute('timeline');
   }
-  set enable(value) {
-    this.setAttribute('enable', value)
+  set timeline(value) {
+    this.setAttribute('timeline', value)
   }
-  get pauseplay() {
-    return this.getAttribute('pauseplay');
+  get pausePlay() {
+    return this.getAttribute('pausePlay');
   }
-  set pauseplay(value) {
-    this.setAttribute('pauseplay', value);
+  set pausePlay(value) {
+    this.setAttribute('pausePlay', value);
   }
   get keyframes() {
     return this.getAttribute('keyframes');
@@ -396,17 +386,17 @@ class MovingText extends HTMLElement {
   set easing(value) {
     this.setAttribute('easing', value);
   }
-  get enddelay() {
-    return parseFloat(this.getAttribute('enddelay')) || 0;
+  get endDelay() {
+    return parseFloat(this.getAttribute('endDelay')) || 0;
   }
-  set enddelay(value) {
-    this.setAttribute('enddelay', value);
+  set endDelay(value) {
+    this.setAttribute('endDelay', value);
   }
-  get iterationstart() {
-    return parseFloat(this.getAttribute('iterationstart')) || 0;
+  get iterationStart() {
+    return parseFloat(this.getAttribute('iterationStart')) || 0;
   }
-  set iterationstart(value) {
-    this.setAttribute('iterationstart', value);
+  set iterationStart(value) {
+    this.setAttribute('iterationStart', value);
   }
   get iterations() {
     return parseFloat(this.getAttribute('iterations'));
@@ -414,29 +404,35 @@ class MovingText extends HTMLElement {
   set iterations(value) {
     this.setAttribute('iterations', value);
   }
-  get playbackrate() {
-    return parseFloat(this.getAttribute('playbackrate'));
+  get playbackRate() {
+    return parseFloat(this.getAttribute('playbackRate'));
   }
-  set playbackrate(value) {
-    this.setAttribute('playbackrate', value);
+  set playbackRate(value) {
+    this.setAttribute('playbackRate', value);
   }
-  get currenttime() {
-    return parseFloat(this.getAttribute('currenttime'));
+  get currentTime() {
+    return parseFloat(this.getAttribute('currentTime'));
   }
-  set currenttime(value) {
-    this.setAttribute('currenttime', value);
+  set currentTime(value) {
+    this.setAttribute('currentTime', value);
   }
-  get starttime() {
-    return parseFloat(this.getAttribute('starttime'));
+  get startTime() {
+    return parseFloat(this.getAttribute('startTime'));
   }
-  set starttime(value) {
-    this.setAttribute('starttime', value);
+  set startTime(value) {
+    this.setAttribute('startTime', value);
   }
   //
   //handle values and changes to the attributes
   attributeChangedCallback(attrName, oldVal, newVal) {
-    if (attrName === 'enable') {
-
+    if (attrName === 'timeline') {
+      newVal = new DocumentTimeline({
+        originTime: document.timeline.currentTime,
+      })
+      console.log(`Assigned timeline ${this.id}Timeline!
+        ${this.id}Timeline currentTime: ${newVal.currentTime}`,
+        newVal
+      );
     }
     if (attrName === 'keyframes') {
       // get timing options object
@@ -445,8 +441,8 @@ class MovingText extends HTMLElement {
       // create/get new timeline
       // create new animation(KeyFrameEffect, timeline)
     }
-    if (attrName === 'pauseplay') {
-
+    if (attrName === 'pausePlay') {
+      // animation.newVal();
     }
     if (attrName === 'delay') {
       // add to timing object
@@ -460,29 +456,29 @@ class MovingText extends HTMLElement {
     if (attrName === 'easing') {
       // add to timing object
     }
-    if (attrName === 'enddelay') {
+    if (attrName === 'endDelay') {
       // add to timing object
     }
-    if (attrName === 'iterationstart') {
+    if (attrName === 'iterationStart') {
       // add to timing object
     }
     if (attrName === 'iterations') {
       // add to timing object
     }
-    if (attrName === 'playbackrate') {
+    if (attrName === 'playbackRate') {
       // check animation object complete
-      // animation.playbackrate = 1
+      // animation.playbackRate = 1
       // animation.play
     }
-    if (attrName === 'starttime') {
+    if (attrName === 'startTime') {
       // check animation object complete
-      // animation.starttime = 
+      // animation.startTime = 
     }
-    if (attrName === 'currenttime') {
+    if (attrName === 'currentTime') {
       // reset animations and pause them
       // animations.forEach((animation) => {
       //  animation.pause();
-      //  animation.currenttime=0; // "start page over option?"
+      //  animation.currentTime=0; // "start page over option?"
       //})
     }
   }

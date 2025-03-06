@@ -17,7 +17,7 @@ cont 0 100 100
 
 :root {
   background-color: #213547;
-  color: #f1f1f1f5;
+  color: ivory;
   font-family: Ikarus, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-size: 62.5%;
   font-feature-settings:
@@ -34,12 +34,17 @@ cont 0 100 100
   font-variation-settings: "ital" 0, "cont" 0;
   font-weight: 325;
   font-stretch: 100%;
-  line-height: 1.5;
+  line-height: 1.4;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-snap-type: x mandatory;
+}
+
+h1 {
+  font-size: 4rem;
+  place-self: center;
 }
 
 span:hover::after {

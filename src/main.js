@@ -1,13 +1,20 @@
-import { words, createAndPauseAnimation, iterateOverStartTime }
-  from './modules/parentModule.js';
+// import {
+//   words, lines, sections, createAndPauseAnimation, iterateOverStartTime,
+// } from './modules/parentModule.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // HTML has loaded
   console.log('Main.js and the DOM are loaded');
 });
 
+// // create word animations and push to wordAnimations array
+// const wordAnimations = words
+//   .filter(w => w.getAttribute('data-enable') === 'true')
+//   .map(w => createAndPauseAnimation(w));
 
-
+// // set startTimes (for sequence testing at the moment)
+// iterateOverStartTime(wordAnimations);
+// console.log("Animation startTimes set.");
 
 
 // // Create animations for all lines
