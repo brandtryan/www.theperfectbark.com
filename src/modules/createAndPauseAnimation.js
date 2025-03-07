@@ -1,49 +1,29 @@
 
 export function createAndPauseAnimation(element) {
-  if (!element || element.enable === 'false') return null;
+  if (!element) return null;
 
-  const keyframes = JSON.parse(element.keyframes);
+  const timeline = new DocumentTimeline({
+    originTime: document.timeline.currentTime,
+  });
+
+  const keyframes = JSON.parse(element.getAttribute(keyframes));
   const options = {
-    delay: parseFloat(element.delay),
-    enddelay: parseFloat(element.enddelay),
-    direction: element.direction,
-    duration: parseFloat(element.duration),
-    easing: element.easing,
-    iterationstart: parseFloat(element.iterationstart),
-    composite: element.composite,
-    iterationcomposite: element.iterationcomposite,
-    iterations: parseFloat(element.iterations),
+    delay: parseFloat(element.dataset.delay),
+    direction: element.dataset.direction,
+    duration: parseFloat(element.dataset.duration),
+    easing: element.dataset.easing,
+    enddelay: parseFloat(element.dataset.enddelay),
+    fill: element.dataset.fill,
+    iterationstart: parseFloat(element.dataset.iterationstart),
+    iterations: parseFloat(element.dataset.iterations),
+    composite: element.dataset.composite,
+    iterationcomposite: element.dataset.iterationcomposite
   };
 
   const effect = new KeyframeEffect(element, keyframes, options);
-  const animation = new Animation(effect);
+  const animation = new Animation(effect, timeline);
   animation.id = element.id + 'Animation';
 
-  //
-  // for (let i = 0; i < 35; i++) {
-  //   sectionTimelines.push({ name: `s${i.toString().padStart(2, '0')}Timeline` });
-  // }
-
-  // sections.forEach(section => {
-  //   const timelineName = section.timeline;
-  //   const timeline = sectionTimelines.find(tl => tl.name === timelineName);
-
-  //   if (timeline) {
-  //     const animation = { timeline: null };
-  //     animation.timeline = timeline.name;
-  //     console.log(`Assigned timeline ${timeline.name} to section with data-timeline ${timelineName}`);
-  //   } else {
-  //     console.error(`No matching timeline found for data-timeline: ${timelineName}`);
-  //   }
-  // });
-
-  // // Example of how to access the timelines later if needed:
-  // const timelineLookup = {};
-  // sectionTimelines.forEach(timeline => {
-  //   timelineLookup[timeline.name] = timeline;
-  // });
-
-  // animation.play();
   animation.pause();
 
   return animation;
