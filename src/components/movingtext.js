@@ -75,6 +75,7 @@ import {
   s33Lines,
   s34Lines
 } from '../modules/parentModule';
+import { createAndPauseAnimation } from '../modules/parentModule';
 
 class MovingText extends HTMLElement {
   constructor() {
@@ -83,7 +84,11 @@ class MovingText extends HTMLElement {
   }
 
   connectedCallback() {
-    pages.forEach(p => console.log(this));
+    const s00Words = words.forEach(w => w.id.includes('s00'));
+    s00Words.forEach(w => createAndPauseAnimation(w));
+    const s00Animas = s00Words.map(w => w.getAnimations());
+    console.log(s00Animas);
+
   }
 
 
@@ -247,32 +252,32 @@ class MovingText extends HTMLElement {
 
 customElements.define('moving-text', MovingText);
 
-export function createAndPauseAnimation(element) {
-  if (!element) return null;
+// export function createAndPauseAnimation(element) {
+//   if (!element) return null;
 
-  const timeline = new DocumentTimeline({
-    originTime: document.timeline.currentTime,
-  });
+//   const timeline = new DocumentTimeline({
+//     originTime: document.timeline.currentTime,
+//   });
 
-  const keyframes = JSON.parse(element.getAttribute(keyframes));
-  const options = {
-    delay: parseFloat(element.dataset.delay),
-    direction: element.dataset.direction,
-    duration: parseFloat(element.dataset.duration),
-    easing: element.dataset.easing,
-    enddelay: parseFloat(element.dataset.enddelay),
-    fill: element.dataset.fill,
-    iterationstart: parseFloat(element.dataset.iterationstart),
-    iterations: parseFloat(element.dataset.iterations),
-    composite: element.dataset.composite,
-    iterationcomposite: element.dataset.iterationcomposite
-  };
+//   const keyframes = JSON.parse(element.getAttribute(keyframes));
+//   const options = {
+//     delay: parseFloat(element.dataset.delay),
+//     direction: element.dataset.direction,
+//     duration: parseFloat(element.dataset.duration),
+//     easing: element.dataset.easing,
+//     enddelay: parseFloat(element.dataset.enddelay),
+//     fill: element.dataset.fill,
+//     iterationstart: parseFloat(element.dataset.iterationstart),
+//     iterations: parseFloat(element.dataset.iterations),
+//     composite: element.dataset.composite,
+//     iterationcomposite: element.dataset.iterationcomposite
+//   };
 
-  const effect = new KeyframeEffect(element, keyframes, options);
-  const animation = new Animation(effect, timeline);
-  animation.id = element.id + 'Animation';
+//   const effect = new KeyframeEffect(element, keyframes, options);
+//   const animation = new Animation(effect, timeline);
+//   animation.id = element.id + 'Animation';
 
-  animation.pause();
+//   animation.pause();
 
-  return animation;
-}
+//   return animation;
+// }
