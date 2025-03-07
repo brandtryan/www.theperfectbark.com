@@ -42,6 +42,39 @@ cont 0 100 100
   scroll-snap-type: x mandatory;
 }
 
+main {
+  border: 1px solid cornflowerblue;
+  container-type: size;
+  width: 51ch;
+  height: 100%;
+  place-self: center;
+  place-content: center;
+  font-size: clamp(1.4rem, 0.75vw + 1.24rem, 2.2rem);
+  white-space: nowrap;
+  overflow: visible;
+  padding: 0;
+}
+
+.root {
+  height: 100vh;
+}
+
+moving-text {
+  display: block;
+  border: 1px solid red;
+  content-visibility: auto;
+  contain-intrinsic-width: 51ch;
+  contain-intrinsic-height: 100vh;
+  scroll-snap-stop: always;
+}
+
+moving-text p {
+  border: 1px dashed lightcoral;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-left: 2.5rem;
+}
+
 h1 {
   font-size: 4rem;
   place-self: center;

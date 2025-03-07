@@ -1,408 +1,95 @@
 //This file will be the web component
 //It only needs to run, not be imported by main.js
-import { createAndPauseAnimation } from "../modules/createAndPauseAnimation";
-
-const template = document.createElement('template');
+import {
+  pages,
+  lines,
+  words,
+  s00Words,
+  s01Words,
+  s02Words,
+  s03Words,
+  s04Words,
+  s05Words,
+  s06Words,
+  s07Words,
+  s08Words,
+  s09Words,
+  s10Words,
+  s11Words,
+  s12Words,
+  s13Words,
+  s14Words,
+  s15Words,
+  s16Words,
+  s17Words,
+  s18Words,
+  s19Words,
+  s20Words,
+  s21Words,
+  s22Words,
+  s23Words,
+  s24Words,
+  s25Words,
+  s26Words,
+  s27Words,
+  s28Words,
+  s29Words,
+  s30Words,
+  s31Words,
+  s32Words,
+  s33Words,
+  s34Words,
+  s00Lines,
+  s01Lines,
+  s02Lines,
+  s03Lines,
+  s04Lines,
+  s05Lines,
+  s06Lines,
+  s07Lines,
+  s08Lines,
+  s09Lines,
+  s10Lines,
+  s11Lines,
+  s12Lines,
+  s13Lines,
+  s14Lines,
+  s15Lines,
+  s16Lines,
+  s17Lines,
+  s18Lines,
+  s19Lines,
+  s20Lines,
+  s21Lines,
+  s22Lines,
+  s23Lines,
+  s24Lines,
+  s25Lines,
+  s26Lines,
+  s27Lines,
+  s28Lines,
+  s29Lines,
+  s30Lines,
+  s31Lines,
+  s32Lines,
+  s33Lines,
+  s34Lines
+} from '../modules/parentModule';
 
 class MovingText extends HTMLElement {
   constructor() {
     super();
-    this.shadow = this.attachShadow({ mode: 'open' });
-    this._count = 0;
-    this.render();
-    this.setupEventListeners();
-    // let clone = template.content.cloneNode(true);
-    // this.shadow.appendChild(clone);
+
   }
 
-  render() {
-    this.shadow.innerHTML = `
-    <style>
-    :host {
-      display: block;
-      padding: 0;
-    }
-    .root {
-      border: 1px solid red;
-      place-content: center;
-      place-self: center;
-      width: 49ch;
-      height: 100vh;
-      content-visibility: auto;
-      contain-intrinsic-width: 49ch;
-      contain-intrinsic-height: 100vh;
-      font-size: clamp(1.4rem, 0.75vw + 1.24rem, 2.2rem);
-      white-space: nowrap;
-      overflow: visible;
-      line-height: 1.3.5;
-      scroll-snap-stop: always;
-    }
-    ::slotted(p) {
-      margin-block-start: 0;
-      margin-block-end: 0;
-    }
-
-    button { padding: 10px; }
-    </style>
-    <div class="root">
-      <p>Count: ${this._count}</p>
-      <button id="increment">Increment</button>
-      <slot name="l00">
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-      </slot>
-      <slot name="l01">
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-      </slot>
-      <slot name="l02">
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-      </slot>
-      <slot name="l03">
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-      </slot>
-      <slot name="l04">
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-      </slot>
-      <slot name="l05">
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-      </slot>
-      <slot name="l06">
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-      </slot>
-      <slot name="l07">
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></slot> 
-      </slot>
-      <slot name="l08">
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></slot> 
-      </slot>
-      <slot name="l09">
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-      </slot>
-      <slot name="l10">
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-      </slot>
-      <slot name="l11">
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-      </slot>
-      <slot name="l12">
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-      </slot>
-      <slot name="l13">
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-      </slot>
-      <slot name="l14">
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-      </slot>
-      <slot name="l15">
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-      </slot>
-      <slot name="l16">
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-      </slot>
-      <slot name="l17">
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-      </slot>
-      <slot name="l18">
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-        <span></span> 
-      </slot>
-    </div>
-  `;
+  connectedCallback() {
+    pages.forEach(p => console.log(this));
   }
 
-  setupEventListeners() {
-    this.shadow.getElementById('increment').addEventListener('click', () => {
-      this._count++;
-      this.render();
-      this.dispatchEvent(new CustomEvent('count-changed', {
-        detail: { count: this._count },
-        bubbles: true,
-        composed: true,
-      }));
-    });
-  }
 
-  get count() {
-    return this._count;
-  }
+  disconnectedCallback() {
 
-  set count(value) {
-    this._count = value;
-    this.render();
   }
-
   //
   //create properties to sync with attributes
   get id() {
@@ -493,29 +180,6 @@ class MovingText extends HTMLElement {
     this.setAttribute('starttime', value);
   }
 
-  connectedCallback() {
-    // const pagesArray = Array.from(this.root.querySelectorAll('.root'));
-    // const [pages] = [pagesArray];
-    // const linesArray = Array.from(this.root.querySelectorAll('moving-text p'));
-    // const [lines] = [linesArray];
-    const wordsArray = Array.from(this.shadow.querySelectorAll('span'))
-
-    // if (this === document.querySelector('#s00')) {
-    //   const s00Words = this.querySelectorAll('span');
-    //   let objKeys = Object.keys(s00Words[0]);
-    //   console.log(objKeys);
-
-    // }
-
-    // const wordsArray = Array.from(this.root.querySelectorAll('span'), w => {
-    //   console.log(w.hasAttribute('id'))
-    // });
-  }
-
-
-  disconnectedCallback() {
-
-  }
 
   //define the allowed attributes
   static get observedAttributes() {
@@ -582,3 +246,33 @@ class MovingText extends HTMLElement {
 }
 
 customElements.define('moving-text', MovingText);
+
+export function createAndPauseAnimation(element) {
+  if (!element) return null;
+
+  const timeline = new DocumentTimeline({
+    originTime: document.timeline.currentTime,
+  });
+
+  const keyframes = JSON.parse(element.getAttribute(keyframes));
+  const options = {
+    delay: parseFloat(element.dataset.delay),
+    direction: element.dataset.direction,
+    duration: parseFloat(element.dataset.duration),
+    easing: element.dataset.easing,
+    enddelay: parseFloat(element.dataset.enddelay),
+    fill: element.dataset.fill,
+    iterationstart: parseFloat(element.dataset.iterationstart),
+    iterations: parseFloat(element.dataset.iterations),
+    composite: element.dataset.composite,
+    iterationcomposite: element.dataset.iterationcomposite
+  };
+
+  const effect = new KeyframeEffect(element, keyframes, options);
+  const animation = new Animation(effect, timeline);
+  animation.id = element.id + 'Animation';
+
+  animation.pause();
+
+  return animation;
+}
