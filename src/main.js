@@ -3,9 +3,6 @@
 // } from './modules/parentModule.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  let firstPage = document.querySelector('moving-text');
-  console.log(firstPage.childElementCount);
-
   // HTML has loaded
   console.log('Main.js and the DOM are loaded');
 });
