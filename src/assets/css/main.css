@@ -65,9 +65,8 @@ moving-text p {
   line-height: 1.5;
 }
 
-
 moving-text p span:hover::after {
-  content: attr(id);
+  content: attr(wordid);
   display: block;
   position: absolute;
   background-color: rgba(0, 0, 0, 0.7);
