@@ -17,6 +17,221 @@ class MovingText extends HTMLElement {
     this.animateText();
   }
 
+  // create properties to sync with attributes
+  get timeline() {
+    return this.getAttribute('timeline');
+  }
+  set timeline(value) {
+    this.setAttribute('timeline', value)
+  }
+  get wordid() {
+    return this.getAttribute('wordid');
+  }
+  get play() {
+    return this.getAttribute('play');
+  }
+  set play(value) {
+    this.setAttribute('play', value);
+  }
+  get pause() {
+    return this.getAttribute('pause');
+  }
+  set pause(value) {
+    this.setAttribute('pause', value);
+  }
+  get currenttime() {
+    return parseFloat(this.getAttribute('currenttime'));
+  }
+  set currenttime(value) {
+    this.setAttribute('currenttime', value);
+  }
+  get reverse() {
+    return this.getAttribute('reverse');
+  }
+  set reverse(value) {
+    this.setAttribute('reverse', value);
+  }
+  get cancel() {
+    return this.getAttribute('cancel');
+  }
+  set cancel(value) {
+    this.setAttribute('cancel', value);
+  }
+  get finish() {
+    return this.getAttribute('finish');
+  }
+  set finish(value) {
+    this.setAttribute('finish', value);
+  }
+  get remove() {
+    return this.getAttribute('remove');
+  }
+  set remove(value) {
+    this.setAttribute('remove', value);
+  }
+  get updateplaybackrate() {
+    return this.getAttribute('updateplaybackrate');
+  }
+  set updateplaybackrate(value) {
+    this.setAttribute('updateplaybackrate', value);
+  }
+  get getcomputedtiming() {
+    return this.getAttribute('getcomputedtiming');
+  }
+  get keyframes() {
+    return this.getAttribute('keyframes');
+  }
+  set keyframes(value) {
+    this.setAttribute('keyframes', value);
+  }
+  get options() {
+    return this.getAttribute('options');
+  }
+  set options(value) {
+    this.setAttribute('options', value);
+  }
+  get playbackrate() {
+    return this.getAttribute('playbackrate');
+  }
+  set playbackrate(value) {
+    this.setAttribute('playbackrate', value);
+  }
+  get ready() {
+    return this.getAttribute('ready');
+  }
+  set ready(value) {
+    this.setAttribute('ready', value);
+  }
+  get finished() {
+    return this.getAttribute('finished');
+  }
+  set finished(value) {
+    this.setAttribute('finished', value);
+  }
+  get pending() {
+    return this.getAttribute('pending');
+  }
+  set pending(value) {
+    this.setAttribute('pending', value);
+  }
+  get playstate() {
+    return this.getAttribute('playstate');
+  }
+  set playstate(value) {
+    this.setAttribute('playstate', value);
+  }
+  get oncancel() {
+    return this.getAttribute('oncancel');
+  }
+  set oncancel(value) {
+    this.setAttribute('oncancel', value);
+  }
+  get onfinish() {
+    return this.getAttribute('onfinish');
+  }
+  set onfinish(value) {
+    this.setAttribute('onfinish', value);
+  }
+  get onremove() {
+    return this.getAttribute('onremove');
+  }
+  set onremove(value) {
+    this.setAttribute('onremove', value);
+  }
+  get animationid() {
+    return this.getAttribute('animationid');
+  }
+  set animationid(value) {
+    this.setAttribute('animationid', value);
+  }
+  get starttime() {
+    return parseFloat(this.getAttribute('starttime'));
+  }
+  set starttime(value) {
+    this.setAttribute('starttime', value);
+  }
+
+  //define the allowed attributes
+  static get observedAttributes() {
+    return ['timeline', 'play', 'pause', 'currenttime', 'reverse', 'cancel', 'finish', 'remove', 'updateplaybackrate', 'keyframes', 'options', 'playbackrate', 'ready', 'finished', 'pending', 'playstate', 'oncancel', 'onfinish', 'onremove', 'starttime'];
+  }
+
+  //
+  //handle values and changes to the attributes
+  attributeChangedCallback(attrName, oldVal, newVal) {
+    if (attrName === 'timeline') {
+
+    }
+    if (attrName === 'play') {
+      // animation.newVal();
+    }
+    if (attrName === 'pause') {
+      // animation.newVal();
+    }
+    if (attrName === 'currenttime') {
+      // reset animations and pause them
+      // animations.forEach((animation) => {
+      //  animation.pause();
+      //  animation.currenttime=0; // "start page over option?"
+      //})
+    }
+    if (attrName === 'reverse') {
+
+    }
+    if (attrName === 'cancel') {
+
+    }
+    if (attrName === 'finish') {
+
+    }
+    if (attrName === 'remove') {
+
+    }
+    if (attrName === 'updateplaybackrate') {
+
+    }
+    if (attrName === 'keyframes') {
+      // get timing options object
+      //
+      // create new KeyfromeEffect from joing keyframes object and options object, null target
+      // create/get new timeline
+      // create new animation(KeyFrameEffect, timeline)
+    }
+    if (attrName === 'options') {
+
+    }
+    if (attrName === 'playbackrate') {
+      // check animation object complete
+      // animation.playbackrate = 1
+      // animation.play
+    }
+    if (attrName === 'ready') {
+
+    }
+    if (attrName === 'finished') {
+
+    }
+    if (attrName === 'pending') {
+
+    }
+    if (attrName === 'playstate') {
+
+    }
+    if (attrName === 'oncancel') {
+
+    }
+    if (attrName === 'onfinish') {
+
+    }
+    if (attrName === 'onremove') {
+
+    }
+    if (attrName === 'starttime') {
+      // check animation object complete
+      // animation.starttime =
+    }
+  }
+
   animateText() {
     const words = this.querySelectorAll('[wordid]');
 
@@ -32,15 +247,17 @@ class MovingText extends HTMLElement {
       detail: {
         wordid: word.getAttribute('wordid'),
         animationParams: {
-          keyframes: [
-            { fontVariationSettings: '"wght" 100, "wdth" 60, "ital" 0, "cont" 0' },
-            { fontVariationSettings: '"wght" 900, "wdth" 140, "ital" 12, "cont" 100' },
-            { fontVariationSettings: '"wght" 325, "wdth" 100, "ital" 0, "cont" 0' }
-          ],
-          options: {
-            duration: this.animationDuration,
-            iterations: 2
-          },
+          // keyframes: [
+          //   { fontVariationSettings: '"wght" 100, "wdth" 60, "ital" 0, "cont" 0' },
+          //   { fontVariationSettings: '"wght" 900, "wdth" 140, "ital" 12, "cont" 100' },
+          //   { fontVariationSettings: '"wght" 325, "wdth" 100, "ital" 0, "cont" 0' }
+          // ],
+          keyframes: JSON.parse(word.getAttribute('keyframes')),
+          // options: {
+          //   duration: this.animationDuration,
+          //   iterations: 2
+          // },
+          options: JSON.parse(word.getAttribute('options')),
         },
       },
       bubbles: true,
@@ -67,159 +284,6 @@ document.addEventListener('animate-word', (event) => {
   };
 });
 
-//create properties to sync with attributes
-// get id() {
-//   return this.getAttribute('id');
-// }
-// get timeline() {
-//   return this.getAttribute('timeline');
-// }
-// set timeline(value) {
-//   this.setAttribute('timeline', value)
-// }
-// get play() {
-//   return this.getAttribute('play');
-// }
-// set play(value) {
-//   this.setAttribute('play', value);
-// }
-// get pause() {
-//   return this.getAttribute('pause');
-// }
-// set pause(value) {
-//   this.setAttribute('pause', value);
-// }
-// get keyframes() {
-//   return this.getAttribute('keyframes');
-// }
-// set keyframes(value) {
-//   this.setAttribute('keyframes', value);
-// }
-// get delay() {
-//   return parseFloat(this.getAttribute('delay')) || 0;
-// }
-// set delay(value) {
-//   this.setAttribute('delay', value);
-// }
-// get direction() {
-//   return this.getAttribute('direction');
-// }
-// set direction(value) {
-//   this.setAttribute('direction', value);
-// }
-// get duration() {
-//   return parseFloat(this.getAttribute('duration')) || 0;
-// }
-// set duration(value) {
-//   this.setAttribute('duration', value);
-// }
-// get easing() {
-//   return this.getAttribute('easing');
-// }
-// set easing(value) {
-//   this.setAttribute('easing', value);
-// }
-// get enddelay() {
-//   return parseFloat(this.getAttribute('enddelay')) || 0;
-// }
-// set enddelay(value) {
-//   this.setAttribute('enddelay', value);
-// }
-// get iterationstart() {
-//   return parseFloat(this.getAttribute('iterationstart')) || 0;
-// }
-// set iterationstart(value) {
-//   this.setAttribute('iterationstart', value);
-// }
-// get iterations() {
-//   return parseFloat(this.getAttribute('iterations'));
-// }
-// set iterations(value) {
-//   this.setAttribute('iterations', value);
-// }
-// get playbackrate() {
-//   return parseFloat(this.getAttribute('playbackrate'));
-// }
-// set playbackrate(value) {
-//   this.setAttribute('playbackrate', value);
-// }
-// get currenttime() {
-//   return parseFloat(this.getAttribute('currenttime'));
-// }
-// set currenttime(value) {
-//   this.setAttribute('currenttime', value);
-// }
-// get starttime() {
-//   return parseFloat(this.getAttribute('starttime'));
-// }
-// set starttime(value) {
-//   this.setAttribute('starttime', value);
-// }
-
-
-// //define the allowed attributes
-// static get observedAttributes() {
-//   return ['play', 'pause', 'currenttime', 'reverse', 'updateplaybackrate', 'getcomputedtiming', 'keyframes', 'delay', 'direction', 'duration', 'easing', 'enddelay', 'iterationstart', 'iterations', 'playbackrate', 'ready', 'finished', 'pending', 'playstate', 'oncancel', 'onfinish', 'onremove', 'starttime'];
-// }
-
-// //
-// //handle values and changes to the attributes
-// attributeChangedCallback(attrName, oldVal, newVal) {
-//   if (attrName === 'timeline') {
-
-//   }
-//   if (attrName === 'keyframes') {
-//     // get timing options object
-//     //
-//     // create new KeyfromeEffect from joing keyframes object and options object, null target
-//     // create/get new timeline
-//     // create new animation(KeyFrameEffect, timeline)
-//   }
-//   if (attrName === 'play') {
-//     // animation.newVal();
-//   }
-//   if (attrName === 'pause') {
-//     // animation.newVal();
-//   }
-//   if (attrName === 'delay') {
-//     // add to timing object
-//   }
-//   if (attrName === 'direction') {
-//     // add to timing object
-//   }
-//   if (attrName === 'duration') {
-//     // add to timing object
-//   }
-//   if (attrName === 'easing') {
-//     // add to timing object
-//   }
-//   if (attrName === 'enddelay') {
-//     // add to timing object
-//   }
-//   if (attrName === 'iterationstart') {
-//     // add to timing object
-//   }
-//   if (attrName === 'iterations') {
-//     // add to timing object
-//   }
-//   if (attrName === 'playbackrate') {
-//     // check animation object complete
-//     // animation.playbackrate = 1
-//     // animation.play
-//   }
-//   if (attrName === 'starttime') {
-//     // check animation object complete
-//     // animation.starttime =
-//   }
-//   if (attrName === 'currenttime') {
-//     // reset animations and pause them
-//     // animations.forEach((animation) => {
-//     //  animation.pause();
-//     //  animation.currenttime=0; // "start page over option?"
-//     //})
-//   }
-// }
-// }
 
 
 // export function createAndPauseAnimation(element) {

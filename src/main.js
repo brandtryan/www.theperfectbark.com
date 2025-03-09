@@ -7,6 +7,16 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('Main.js and the DOM are loaded');
 });
 
+const span1 = document.querySelector('span');
+const span1Attrs = span1.getAttributeNames();
+console.table(span1Attrs);
+
+const observed = [
+  'timeline', 'play', 'pause', 'currenttime', 'reverse', 'cancel', 'finish', 'remove', 'updateplaybackrate', 'keyframes', 'options', 'playbackrate', 'ready', 'finished', 'pending', 'playstate', 'oncancel', 'onfinish', 'onremove', 'starttime'];
+
+console.table(observed);
+
+
 // // create word animations and push to wordAnimations array
 // const wordAnimations = words
 //   .filter(w => w.getAttribute('data-enable') === 'true')
