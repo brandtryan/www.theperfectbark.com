@@ -5,7 +5,6 @@ ital 0 0 12
 cont 0 100 100
 *********************/
 
-
 @font-face {
   font-family: Ikarus;
   src: url("../Ikarus.woff2") format("woff2-variations");
@@ -15,7 +14,7 @@ cont 0 100 100
   unicode-range: U+00-7F, U+2014;
 }
 
-:root {
+html {
   background-color: #213547;
   color: ivory;
   font-family: Ikarus, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -38,33 +37,24 @@ cont 0 100 100
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  scroll-snap-type: x mandatory;
 }
 
-/* main {
+moving-text {
+  display: block;
   border: 1px solid cornflowerblue;
-  container-type: size;
-  width: 51ch;
-  height: 100%;
+  width: 52ch;
+  height: 100vh;
+  content-visibility: auto;
+  contain-intrinsic-inline-size: 52ch;
+  contain-intrinsic-block-size: 100vh;
   place-self: center;
   place-content: center;
   font-size: clamp(1.4rem, 0.75vw + 1.24rem, 2.2rem);
   white-space: nowrap;
   overflow: visible;
   padding: 0;
-}
-
-.root {
-  height: 100vh;
-}
-
-moving-text {
-  display: block;
-  border: 1px solid red;
-  content-visibility: auto;
-  contain-intrinsic-width: 51ch;
-  contain-intrinsic-height: 100vh;
   scroll-snap-stop: always;
+
 }
 
 moving-text p {
@@ -72,14 +62,11 @@ moving-text p {
   margin-block-start: 0;
   margin-block-end: 0;
   padding-left: 2.5rem;
+  line-height: 1.5;
 }
 
-h1 {
-  font-size: 4rem;
-  place-self: center;
-}
 
-span:hover::after {
+moving-text p span:hover::after {
   content: attr(id);
   display: block;
   position: absolute;
@@ -91,4 +78,9 @@ span:hover::after {
   top: 10px;
   right: 10px;
   z-index: 10;
-} */
+}
+
+h1 {
+  font-size: 4rem;
+  place-self: center;
+}

@@ -1,141 +1,11 @@
-// import {
-//   pages,
-//   lines,
-//   words,
-//   s00Words,
-//   s01Words,
-//   s02Words,
-//   s03Words,
-//   s04Words,
-//   s05Words,
-//   s06Words,
-//   s07Words,
-//   s08Words,
-//   s09Words,
-//   s10Words,
-//   s11Words,
-//   s12Words,
-//   s13Words,
-//   s14Words,
-//   s15Words,
-//   s16Words,
-//   s17Words,
-//   s18Words,
-//   s19Words,
-//   s20Words,
-//   s21Words,
-//   s22Words,
-//   s23Words,
-//   s24Words,
-//   s25Words,
-//   s26Words,
-//   s27Words,
-//   s28Words,
-//   s29Words,
-//   s30Words,
-//   s31Words,
-//   s32Words,
-//   s33Words,
-//   s34Words,
-//   s00Lines,
-//   s01Lines,
-//   s02Lines,
-//   s03Lines,
-//   s04Lines,
-//   s05Lines,
-//   s06Lines,
-//   s07Lines,
-//   s08Lines,
-//   s09Lines,
-//   s10Lines,
-//   s11Lines,
-//   s12Lines,
-//   s13Lines,
-//   s14Lines,
-//   s15Lines,
-//   s16Lines,
-//   s17Lines,
-//   s18Lines,
-//   s19Lines,
-//   s20Lines,
-//   s21Lines,
-//   s22Lines,
-//   s23Lines,
-//   s24Lines,
-//   s25Lines,
-//   s26Lines,
-//   s27Lines,
-//   s28Lines,
-//   s29Lines,
-//   s30Lines,
-//   s31Lines,
-//   s32Lines,
-//   s33Lines,
-//   s34Lines
-// } from '../modules/parentModule';
-
-const template = document.createElement('template');
-template.innerHTML = `
-  <style>
-    :host {
-      display: block;
-      border: 1px solid cornflowerblue;
-      container-type: size;
-      width: 51ch;
-      height: 100vh;
-      place-self: center;
-      place-content: center;
-      font-size: clamp(1.4rem, 0.75vw + 1.24rem, 2.2rem);
-      white-space: nowrap;
-      overflow: visible;
-      padding: 0;
-    }
-    
-    ::slotted(div) {
-      border: 1px solid red;
-      content-visibility: auto;
-      contain-intrinsic-width: 51ch;
-      contain-intrinsic-height: 100vh;
-      scroll-snap-stop: always;
-    }
-
-    p {
-      border: 1px dashed lightcoral;
-      margin-block-start: 0;
-      margin-block-end: 0;
-      padding-left: 2.5rem;
-    }
-
-    h1 {
-      font-size: 4rem;
-      place-self: center;
-    }
-
-    span:hover::after {
-      content: attr(wordid);
-      display: block;
-      position: absolute;
-      background-color: rgba(0, 0, 0, 0.7);
-      color: cornflowerblue;
-      padding: 5px;
-      border-radius: 3px;
-      font-size: 1.2rem;
-      top: 10px;
-      right: 10px;
-      z-index: 10;
-    }
-</style>
-<slot></slot>
-`;
-
 class MovingText extends HTMLElement {
   constructor() {
     super();
     this.animationDuration = 1000;
     this.staggerDelay = 200;
+    const kitchenSink = document.createElement('slot');
     const shadowRoot = this.attachShadow({ mode: 'open' });
-    const clone = template.content.cloneNode(true);
-    shadowRoot.append(clone);
+    shadowRoot.appendChild(kitchenSink);
 
   }
 
@@ -169,9 +39,7 @@ class MovingText extends HTMLElement {
           ],
           options: {
             duration: this.animationDuration,
-            easing: 'ease-in-out',
             iterations: 2
-            // fill: 'forwards'
           },
         },
       },
@@ -191,16 +59,12 @@ document.addEventListener('animate-word', (event) => {
   const targetWord = document.querySelector(`[wordid="${wordid}"]`);
 
   if (targetWord) {
-    // try {
-    //   // const animation = targetword.animate(animationparams.keyframes, animationparams.options);
-    targetWord.animate(animationParams.keyframes, animationParams.options);
-    //   // animation.onfinish = () => {
-    //   //   // ensure the final state is maintained
-    //   //   targetword.style.fontvariationsettings = animationparams.keyframes[1].fontvariationsettings;
-    // //   };
-    // // // } catch (error) {
-    //   console.error(`Animation failed for word ${wordid}:`, error);
-  }
+    try {
+      targetWord.animate(animationParams.keyframes, animationParams.options);
+    } catch (error) {
+      console.error(`Animation failed for word ${wordid}:`, error);
+    }
+  };
 });
 
 //create properties to sync with attributes
@@ -387,3 +251,79 @@ document.addEventListener('animate-word', (event) => {
 
 //   return animation;
 // }
+
+// import {
+//   pages,
+//   lines,
+//   words,
+//   s00Words,
+//   s01Words,
+//   s02Words,
+//   s03Words,
+//   s04Words,
+//   s05Words,
+//   s06Words,
+//   s07Words,
+//   s08Words,
+//   s09Words,
+//   s10Words,
+//   s11Words,
+//   s12Words,
+//   s13Words,
+//   s14Words,
+//   s15Words,
+//   s16Words,
+//   s17Words,
+//   s18Words,
+//   s19Words,
+//   s20Words,
+//   s21Words,
+//   s22Words,
+//   s23Words,
+//   s24Words,
+//   s25Words,
+//   s26Words,
+//   s27Words,
+//   s28Words,
+//   s29Words,
+//   s30Words,
+//   s31Words,
+//   s32Words,
+//   s33Words,
+//   s34Words,
+//   s00Lines,
+//   s01Lines,
+//   s02Lines,
+//   s03Lines,
+//   s04Lines,
+//   s05Lines,
+//   s06Lines,
+//   s07Lines,
+//   s08Lines,
+//   s09Lines,
+//   s10Lines,
+//   s11Lines,
+//   s12Lines,
+//   s13Lines,
+//   s14Lines,
+//   s15Lines,
+//   s16Lines,
+//   s17Lines,
+//   s18Lines,
+//   s19Lines,
+//   s20Lines,
+//   s21Lines,
+//   s22Lines,
+//   s23Lines,
+//   s24Lines,
+//   s25Lines,
+//   s26Lines,
+//   s27Lines,
+//   s28Lines,
+//   s29Lines,
+//   s30Lines,
+//   s31Lines,
+//   s32Lines,
+//   s33Lines,
+//   s34Lines
+// } from '../modules/parentModule';
