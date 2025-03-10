@@ -1,11 +1,47 @@
+const mobileFirstTemplate = document.createElement('template');
+mobileFirstTemplate.innerHTML = `
+  <style>
+    :host {
+      display: block;
+      border: 1px solid cornflowerblue;
+      width: 52ch;
+      height: 100vh;
+      content-visibility: auto;
+      contain-intrinsic-inline-size: 52ch;
+      contain-intrinsic-block-size: 100vh;
+      place-self: center;
+      place-content: center;
+      font-size: clamp(1.4rem, 0.75vw + 1.24rem, 2.2rem);
+      white-space: nowrap;
+      overflow: visible;
+      padding: 0;
+      scroll-snap-stop: always;
+    }
+
+    ::slotted(p) {
+      border: 1px dashed lightcoral;
+      margin-block-start: 0;
+      margin-block-end: 0;
+      padding-left: 2.5rem;
+      line-height: 1.5;
+    }
+  </style>
+  <slot></slot>
+`;
+
 class MovingText extends HTMLElement {
   constructor() {
     super();
     this.animationDuration = 1000;
     this.staggerDelay = 200;
-    const kitchenSink = document.createElement('slot');
+    // const kitchenSink = document.createElement('slot');
     const shadowRoot = this.attachShadow({ mode: 'open' });
-    shadowRoot.appendChild(kitchenSink);
+    let clone = mobileFirstTemplate.content.cloneNode(true);
+    shadowRoot.append(clone);
+
+    //handle slots
+
+    //handle events
 
   }
 
@@ -14,146 +50,156 @@ class MovingText extends HTMLElement {
     // s00Words.forEach(w => createAndPauseAnimation(w));
     // const s00Animas = s00Words.map(w => w.getAnimations());
     // console.log(s00Animas);
+
     this.animateText();
   }
 
+  //define the allowed attributes
+  static get observedAttributes() {
+    return [
+      'wordid',
+      'play',
+      'pause',
+      'currenttime',
+      'reverse',
+      'cancel',
+      'finish',
+      'remove',
+      'updateplaybackrate',
+      'getcomputedtiming',
+      'keyframes',
+      'timing',
+      'target',
+      'playbackrate',
+      'ready',
+      'finished',
+      'pending',
+      'playstate',
+      'oncancel',
+      'onfinish',
+      'onremove',
+      'animationid',
+      'starttime',
+      'timeline'
+    ];
+  }
+
   // create properties to sync with attributes
-  get wordid() {
+  get wordid() {                        //custom id for each word
     return this.getAttribute('wordid');
   }
-  get play() {
+  get play() {                          //Animation Interface - method
     return this.getAttribute('play');
   }
-  set play(value) {
+  set play(value) { //Boolean           //Animation Interface - method 
     this.setAttribute('play', value);
   }
-  get pause() {
+  get pause() {                         //Animation Interface - method 
     return this.getAttribute('pause');
   }
-  set pause(value) {
+  set pause(value) { //Boolean         //Animation Interface - method 
     this.setAttribute('pause', value);
   }
-  get currenttime() {
+  get currenttime() { //milliseconds   //Animation Interface - property
     return parseFloat(this.getAttribute('currenttime'));
   }
-  set currenttime(value) {
+  set currenttime(value) {//milliseconds   //Animation Interface - property 
     this.setAttribute('currenttime', value);
   }
-  get reverse() {
-    return this.getAttribute('reverse');
-  }
-  set reverse(value) {
+  set reverse(value) {//Boolean         //Animation Interface - method  
     this.setAttribute('reverse', value);
   }
-  get cancel() {
-    return this.getAttribute('cancel');
-  }
-  set cancel(value) {
+  set cancel(value) { //Boolean         //Animation Interface - method
     this.setAttribute('cancel', value);
   }
-  get finish() {
-    return this.getAttribute('finish');
-  }
-  set finish(value) {
+  set finish(value) { //Boolean         //Animation Interface - method
     this.setAttribute('finish', value);
   }
-  get remove() {
-    return this.getAttribute('remove');
-  }
-  set remove(value) {
+  set remove(value) { //Boolean         //Animation Interface - method  
     this.setAttribute('remove', value);
   }
-  get updateplaybackrate() {
-    return this.getAttribute('updateplaybackrate');
-  }
-  set updateplaybackrate(value) {
+  set updateplaybackrate(value) { //Float     //Animation Interface - method
     this.setAttribute('updateplaybackrate', value);
   }
-  get getcomputedtiming() {
+  get getcomputedtiming() {           // AnimationEffect Interface - method
     return this.getAttribute('getcomputedtiming');
   }
   get keyframes() {
     return this.getAttribute('keyframes');
   }
-  set keyframes(value) {
+  set keyframes(value) {            // KeyframEffect Interface - method  
     this.setAttribute('keyframes', value);
   }
-  get options() {
-    return this.getAttribute('options');
+  get timing() {
+    return this.getAttribute('timing');
   }
-  set options(value) {
-    this.setAttribute('options', value);
+  set timing(value) {              // AnimationEffect Interface - method 
+    this.setAttribute('timing', value);
+  }
+  get target() {
+    return this.getAttribute('target');
+  }
+  set target(value) {            // KeyframEffect Interface - method  
+    this.setAttribute('target', value);
   }
   get playbackrate() {
     return this.getAttribute('playbackrate');
   }
-  set playbackrate(value) {
+  set playbackrate(value) {       // Animation Interface - property
     this.setAttribute('playbackrate', value);
   }
-  get ready() {
+  get ready() {  //Boolean       // Animation Interface - promise 
     return this.getAttribute('ready');
   }
-  set ready(value) {
-    this.setAttribute('ready', value);
-  }
-  get finished() {
+  get finished() {//Boolean       // Animation Interface - promise  
     return this.getAttribute('finished');
   }
-  set finished(value) {
-    this.setAttribute('finished', value);
-  }
-  get pending() {
+  get pending() {//Boolean       // Animation Interface - property
     return this.getAttribute('pending');
   }
-  set pending(value) {
-    this.setAttribute('pending', value);
-  }
-  get playstate() {
+  get playstate() {             // Animation Interface - property
     return this.getAttribute('playstate');
-  }
-  set playstate(value) {
-    this.setAttribute('playstate', value);
   }
   get oncancel() {
     return this.getAttribute('oncancel');
   }
-  set oncancel(value) {
+  set oncancel(value) {     // Animation Interface - event handler 
     this.setAttribute('oncancel', value);
   }
   get onfinish() {
     return this.getAttribute('onfinish');
   }
-  set onfinish(value) {
+  set onfinish(value) {     // Animation Interface - event handler 
     this.setAttribute('onfinish', value);
   }
   get onremove() {
     return this.getAttribute('onremove');
   }
-  set onremove(value) {
+  set onremove(value) {      // Animation Interface - event handler 
     this.setAttribute('onremove', value);
   }
   get animationid() {
     return this.getAttribute('animationid');
   }
-  set animationid(value) {
+  set animationid(value) {    // Animation Interface - property 
     this.setAttribute('animationid', value);
   }
   get starttime() {
     return parseFloat(this.getAttribute('starttime'));
   }
-  set starttime(value) {
+  set starttime(value) {        //Animation Interface 
     this.setAttribute('starttime', value);
   }
-
-  //define the allowed attributes
-  static get observedAttributes() {
-    return ['timeline', 'play', 'pause', 'currenttime', 'reverse', 'cancel', 'finish', 'remove', 'updateplaybackrate', 'keyframes', 'options', 'playbackrate', 'ready', 'finished', 'pending', 'playstate', 'oncancel', 'onfinish', 'onremove', 'starttime'];
+  get timeline() {
+    return this.getAttribute('timeline');
+  }
+  set timeline(value) {        //Animation Interface 
+    this.setAttribute('timeline', value);
   }
 
-  //
   //handle values and changes to the attributes
   attributeChangedCallback(attrName, oldVal, newVal) {
-    if (attrName === 'timeline') {
+    if (attrName === 'wordid') {
 
     }
     if (attrName === 'play') {
@@ -184,6 +230,9 @@ class MovingText extends HTMLElement {
     if (attrName === 'updateplaybackrate') {
 
     }
+    if (attrName === 'getcomputedtiming') {
+
+    }
     if (attrName === 'keyframes') {
       // get timing options object
       //
@@ -192,6 +241,9 @@ class MovingText extends HTMLElement {
       // create new animation(KeyFrameEffect, timeline)
     }
     if (attrName === 'options') {
+
+    }
+    if (attrName === 'target') {
 
     }
     if (attrName === 'playbackrate') {
@@ -220,11 +272,18 @@ class MovingText extends HTMLElement {
     if (attrName === 'onremove') {
 
     }
+    if (attrName === 'animationid') {
+
+    }
     if (attrName === 'starttime') {
       // check animation object complete
       // animation.starttime =
     }
+    if (attrName === 'timeline') {
+
+    }
   }
+
 
   animateText() {
     const words = this.querySelectorAll('[wordid]');
@@ -248,8 +307,9 @@ class MovingText extends HTMLElement {
       bubbles: true,
       composed: true,
     });
-
-    word.dispatchEvent(event);
+    if (word.getAttribute('play') === 'false' && word.getAttribute('pause') === 'true') {
+      word.dispatchEvent(event);
+    }
   }
 }
 
@@ -269,109 +329,3 @@ document.addEventListener('animate-word', (event) => {
 });
 
 
-
-// export function createAndPauseAnimation(element) {
-//   if (!element) return null;
-
-//   const timeline = new DocumentTimeline({
-//     originTime: document.timeline.currentTime,
-//   });
-
-//   const keyframes = JSON.parse(element.getAttribute(keyframes));
-//   const options = {
-//     delay: parseFloat(element.dataset.delay),
-//     direction: element.dataset.direction,
-//     duration: parseFloat(element.dataset.duration),
-//     easing: element.dataset.easing,
-//     enddelay: parseFloat(element.dataset.enddelay),
-//     fill: element.dataset.fill,
-//     iterationstart: parseFloat(element.dataset.iterationstart),
-//     iterations: parseFloat(element.dataset.iterations),
-//     composite: element.dataset.composite,
-//     iterationcomposite: element.dataset.iterationcomposite
-//   };
-
-//   const effect = new KeyframeEffect(element, keyframes, options);
-//   const animation = new Animation(effect, timeline);
-//   animation.id = element.id + 'Animation';
-
-//   animation.pause();
-
-//   return animation;
-// }
-
-// import {
-//   pages,
-//   lines,
-//   words,
-//   s00Words,
-//   s01Words,
-//   s02Words,
-//   s03Words,
-//   s04Words,
-//   s05Words,
-//   s06Words,
-//   s07Words,
-//   s08Words,
-//   s09Words,
-//   s10Words,
-//   s11Words,
-//   s12Words,
-//   s13Words,
-//   s14Words,
-//   s15Words,
-//   s16Words,
-//   s17Words,
-//   s18Words,
-//   s19Words,
-//   s20Words,
-//   s21Words,
-//   s22Words,
-//   s23Words,
-//   s24Words,
-//   s25Words,
-//   s26Words,
-//   s27Words,
-//   s28Words,
-//   s29Words,
-//   s30Words,
-//   s31Words,
-//   s32Words,
-//   s33Words,
-//   s34Words,
-//   s00Lines,
-//   s01Lines,
-//   s02Lines,
-//   s03Lines,
-//   s04Lines,
-//   s05Lines,
-//   s06Lines,
-//   s07Lines,
-//   s08Lines,
-//   s09Lines,
-//   s10Lines,
-//   s11Lines,
-//   s12Lines,
-//   s13Lines,
-//   s14Lines,
-//   s15Lines,
-//   s16Lines,
-//   s17Lines,
-//   s18Lines,
-//   s19Lines,
-//   s20Lines,
-//   s21Lines,
-//   s22Lines,
-//   s23Lines,
-//   s24Lines,
-//   s25Lines,
-//   s26Lines,
-//   s27Lines,
-//   s28Lines,
-//   s29Lines,
-//   s30Lines,
-//   s31Lines,
-//   s32Lines,
-//   s33Lines,
-//   s34Lines
-// } from '../modules/parentModule';

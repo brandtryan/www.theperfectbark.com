@@ -39,7 +39,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-moving-text {
+/* moving-text {
   display: block;
   border: 1px solid cornflowerblue;
   width: 52ch;
@@ -64,6 +64,7 @@ moving-text p {
   padding-left: 2.5rem;
   line-height: 1.5;
 }
+*/
 
 moving-text p span:hover::after {
   content: attr(wordid);
@@ -77,9 +78,4 @@ moving-text p span:hover::after {
   top: 10px;
   right: 10px;
   z-index: 10;
-}
-
-h1 {
-  font-size: 4rem;
-  place-self: center;
 }
