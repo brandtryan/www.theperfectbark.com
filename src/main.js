@@ -1,22 +1,17 @@
-// import {
-//   words, lines, sections, createAndPauseAnimation, iterateOverStartTime,
-// } from './modules/parentModule.js';
+import { lines, words, pages } from "./modules/elements";
+import { lineWordCountsArray } from "./modules/lineWordCountsArray";
 
 document.addEventListener('DOMContentLoaded', () => {
   // HTML has loaded
   console.log('Main.js and the DOM are loaded');
 });
 
-const span1 = document.querySelector('span');
-const span1Attrs = span1.getAttributeNames();
-console.table(span1Attrs);
+for (let word of words) {
+  console.table(word.id);
+}
+p00
 
-const observed = [
-  'timeline', 'play', 'pause', 'currenttime', 'reverse', 'cancel', 'finish', 'remove', 'updateplaybackrate', 'keyframes', 'options', 'playbackrate', 'ready', 'finished', 'pending', 'playstate', 'oncancel', 'onfinish', 'onremove', 'starttime'];
-
-console.table(observed);
-
-
+w00
 // // create word animations and push to wordAnimations array
 // const wordAnimations = words
 //   .filter(w => w.getAttribute('data-enable') === 'true')

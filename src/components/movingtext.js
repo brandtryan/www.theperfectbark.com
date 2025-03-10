@@ -18,12 +18,6 @@ class MovingText extends HTMLElement {
   }
 
   // create properties to sync with attributes
-  get timeline() {
-    return this.getAttribute('timeline');
-  }
-  set timeline(value) {
-    this.setAttribute('timeline', value)
-  }
   get wordid() {
     return this.getAttribute('wordid');
   }
@@ -247,16 +241,7 @@ class MovingText extends HTMLElement {
       detail: {
         wordid: word.getAttribute('wordid'),
         animationParams: {
-          // keyframes: [
-          //   { fontVariationSettings: '"wght" 100, "wdth" 60, "ital" 0, "cont" 0' },
-          //   { fontVariationSettings: '"wght" 900, "wdth" 140, "ital" 12, "cont" 100' },
-          //   { fontVariationSettings: '"wght" 325, "wdth" 100, "ital" 0, "cont" 0' }
-          // ],
           keyframes: JSON.parse(word.getAttribute('keyframes')),
-          // options: {
-          //   duration: this.animationDuration,
-          //   iterations: 2
-          // },
           options: JSON.parse(word.getAttribute('options')),
         },
       },
@@ -270,7 +255,6 @@ class MovingText extends HTMLElement {
 
 customElements.define('moving-text', MovingText);
 
-// Update the animation listener to include error handling
 document.addEventListener('animate-word', (event) => {
   const { wordid, animationParams } = event.detail;
   const targetWord = document.querySelector(`[wordid="${wordid}"]`);
